@@ -1,0 +1,15 @@
+{
+  "welcome": "Welcome",
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Business overview and key metrics",
+    "overview": "Overview",
+    "hcp": "HCP",
+    "executive": "Executive",
+    "timeRange": {
+      "last7Days": "Last 7 Days",
+      "last30Days": "Last 30 Days",
+      "last90Days": "Last 90 Days"
+    }
+  }
+}

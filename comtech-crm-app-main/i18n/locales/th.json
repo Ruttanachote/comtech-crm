@@ -1,0 +1,15 @@
+{
+  "welcome": "ยินดีต้อนรับ",
+  "dashboard": {
+    "title": "แดชบอร์ด",
+    "subtitle": "ภาพรวมธุรกิจและตัวชี้วัดสำคัญ",
+    "overview": "ภาพรวม",
+    "hcp": "HCP",
+    "executive": "ผู้บริหาร",
+    "timeRange": {
+      "last7Days": "7 วันล่าสุด",
+      "last30Days": "30 วันล่าสุด",
+      "last90Days": "90 วันล่าสุด"
+    }
+  }
+}
