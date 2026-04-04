@@ -2,6 +2,7 @@
   import { useHeaderMenu } from '~/composables/useHeaderMenu';
   import { useSystemStore } from '~~/stores/useSystemStore';
   import { useAuthStore } from '~~/stores/useAuthStore';
+  import NotificationDropdown from '~/components/notification/NotificationDropdown.vue';
   import user from '~/data/user.json';
 
   const { toggleMenu } = useHeaderMenu();
@@ -66,19 +67,7 @@
         <div id="header-actions"></div>
 
         <!-- Notifications -->
-        <div class="relative">
-          <UButton
-            icon="i-heroicons-bell"
-            size="xl"
-            variant="ghost"
-            class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          />
-          <span
-            class="absolute top-1 right-1 flex h-3 w-3 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white ring-2 ring-white dark:ring-gray-900"
-          >
-            4
-          </span>
-        </div>
+        <NotificationDropdown />
 
         <!-- Help -->
         <UButton
