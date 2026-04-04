@@ -143,8 +143,7 @@ const handleClickOutside = (event: MouseEvent) => {
 
 // Handlers
 const handleConnectMicrosoft = () => {
-  // TODO: Implement Microsoft OAuth connection
-  console.log('Connect Microsoft Calendar')
+  router.push('/settings/microsoft-sync')
   isOpen.value = false
 }
 
