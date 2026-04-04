@@ -1,21 +1,24 @@
 <template>
-  <UPopover v-model:open="isOpen" :popper="{ placement: 'bottom-end' }">
+  <UPopover v-model:open="isOpen" mode="click" :popper="{ placement: 'bottom-end' }">
     <!-- Bell Icon Trigger -->
-    <UButton
-      variant="ghost"
-      color="gray"
-      class="p-2 relative"
-    >
-      <UIcon name="i-heroicons-bell" class="w-6 h-6 text-gray-600" />
-      
-      <!-- Badge -->
-      <span
-        v-if="unreadCount > 0"
-        class="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-white"
+    <template #default="{ open }">
+      <UButton
+        variant="ghost"
+        color="gray"
+        class="p-2 relative cursor-pointer hover:bg-gray-100"
+        :class="{ 'bg-gray-100': open }"
       >
-        {{ unreadCount > 99 ? '99+' : unreadCount }}
-      </span>
-    </UButton>
+        <UIcon name="i-heroicons-bell" class="w-6 h-6 text-gray-600" />
+        
+        <!-- Badge -->
+        <span
+          v-if="unreadCount > 0"
+          class="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-white"
+        >
+          {{ unreadCount > 99 ? '99+' : unreadCount }}
+        </span>
+      </UButton>
+    </template>
 
     <!-- Panel Content -->
     <template #panel>
