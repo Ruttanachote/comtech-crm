@@ -3,6 +3,7 @@
   import { useSystemStore } from '~~/stores/useSystemStore';
   import { useAuthStore } from '~~/stores/useAuthStore';
   import NotificationDropdown from '~/components/notification/NotificationDropdown.vue';
+  import ProfileDropdown from '~/components/profile/ProfileDropdown.vue';
   import user from '~/data/user.json';
 
   const { toggleMenu } = useHeaderMenu();
@@ -120,36 +121,8 @@
           @click="toggleTheme"
         />
 
-        <!-- Profile -->
-        <div
-          class="hidden md:flex items-center gap-3 pl-2 border-l border-gray-200 dark:border-gray-700"
-        >
-          <div class="flex flex-col items-end">
-            <div class="flex items-center gap-2">
-              <span class="text-sm font-semibold text-gray-900 dark:text-white">
-                {{ user.name }}
-              </span>
-              <UBadge
-                color="primary"
-                variant="subtle"
-                size="xs"
-                :label="user.role"
-                class="rounded-full"
-              />
-            </div>
-            <span class="text-xs text-gray-500 dark:text-gray-400">
-              {{ t('header.own_customers_only') }}
-            </span>
-          </div>
-          <UAvatar :alt="user.initials" size="md" class="bg-primary-500 text-white" />
-          <UButton
-            icon="i-heroicons-arrow-right-on-rectangle-20-solid"
-            size="xl"
-            variant="ghost"
-            class="ml-1 p-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-            @click="handleLogout"
-          />
-        </div>
+        <!-- Profile Dropdown -->
+        <ProfileDropdown />
       </div>
     </div>
   </div>

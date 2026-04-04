@@ -1,0 +1,32 @@
+{
+  "profile": {
+    "title": "โปรไฟล์",
+    "name": "ชื่อ",
+    "email": "อีเมล",
+    "role": "ตำแหน่ง",
+    "department": "แผนก",
+    "phone": "โทรศัพท์",
+    
+    "menu": {
+      "microsoftCalendar": "Microsoft Calendar",
+      "notConnected": "ยังไม่ได้เชื่อมต่อ",
+      "systemSettings": "ตั้งค่าระบบ",
+      "signOut": "ออกจากระบบ"
+    },
+    
+    "actions": {
+      "connect": "เชื่อมต่อ",
+      "disconnect": "ยกเลิกการเชื่อมต่อ",
+      "editProfile": "แก้ไขโปรไฟล์",
+      "changePassword": "เปลี่ยนรหัสผ่าน",
+      "uploadAvatar": "อัปโหลดรูปภาพ"
+    },
+    
+    "messages": {
+      "connectSuccess": "เชื่อมต่อสำเร็จ",
+      "disconnectSuccess": "ยกเลิกการเชื่อมต่อสำเร็จ",
+      "updateSuccess": "อัปเดตโปรไฟล์สำเร็จ",
+      "signOutConfirm": "คุณต้องการออกจากระบบหรือไม่?"
+    }
+  }
+}
