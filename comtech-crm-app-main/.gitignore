@@ -1,5 +1,6 @@
 # Nuxt dev/build outputs
 .output
+.data
 .nuxt
 .nitro
 .cache
@@ -11,13 +12,33 @@ node_modules
 # Logs
 logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Misc
 .DS_Store
 .fleet
 .idea
+.vscode
+*.swp
+*.swo
 
 # Local env files
-.env
-.env.*
-!.env.example
+
+# CLUADE.md
+CLUADE.md
+ai-usage-guide.md
+
+# vs code settings
+.vscode
+settings.json
+# Testing
+coverage
+.nyc_output
+
+# PWA
+sw.js
+workbox-*.js
+worker-*.js
