@@ -1,5 +1,5 @@
 <template>
-  <div class="notification-dropdown">
+  <div class="relative">
     <!-- Bell Icon -->
     <NotificationBell
       :unread-count="unreadCount"
@@ -49,9 +49,3 @@ const {
   loadMore
 } = useNotification()
 </script>
-
-<style scoped>
-.notification-dropdown {
-  @apply relative;
-}
-</style>

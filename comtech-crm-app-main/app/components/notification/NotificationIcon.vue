@@ -1,12 +1,11 @@
 <template>
   <div
-    class="notification-icon"
-    :class="`notification-icon--${type}`"
+    class="flex items-center justify-center w-10 h-10 rounded-full flex-shrink-0"
     :style="{ backgroundColor: iconConfig.bgColor }"
   >
     <UIcon
       :name="iconConfig.icon"
-      class="notification-icon__icon"
+      class="w-5 h-5"
       :style="{ color: iconConfig.iconColor }"
     />
   </div>
@@ -64,13 +63,3 @@ const iconConfigMap: Record<NotificationType, NotificationIconConfig> = {
 
 const iconConfig = computed(() => iconConfigMap[props.type])
 </script>
-
-<style scoped>
-.notification-icon {
-  @apply flex items-center justify-center w-10 h-10 rounded-full flex-shrink-0;
-}
-
-.notification-icon__icon {
-  @apply w-5 h-5;
-}
-</style>

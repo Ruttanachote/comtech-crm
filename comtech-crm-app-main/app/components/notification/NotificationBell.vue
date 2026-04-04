@@ -1,21 +1,21 @@
 <template>
-  <div class="notification-bell">
+  <div class="relative">
     <UButton
       variant="ghost"
       color="gray"
-      class="notification-bell__button"
+      class="p-2"
       @click="handleClick"
     >
-      <div class="notification-bell__icon-wrapper">
+      <div class="relative">
         <UIcon
           name="i-heroicons-bell"
-          class="notification-bell__icon"
+          class="w-6 h-6 text-gray-600"
         />
         
         <!-- Badge -->
         <span
           v-if="unreadCount > 0"
-          class="notification-bell__badge"
+          class="absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-xs font-bold text-white bg-red-500 rounded-full border-2 border-white"
         >
           {{ unreadCount > 99 ? '99+' : unreadCount }}
         </span>
@@ -23,8 +23,8 @@
         <!-- WebSocket Status Indicator -->
         <span
           v-if="showConnectionStatus"
-          class="notification-bell__status"
-          :class="`notification-bell__status--${connectionStatus}`"
+          class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white"
+          :class="isConnected ? 'bg-green-500' : 'bg-gray-400'"
         />
       </div>
     </UButton>
@@ -49,48 +49,7 @@ const emit = defineEmits<{
   click: []
 }>()
 
-const connectionStatus = computed(() => {
-  return props.isConnected ? 'connected' : 'disconnected'
-})
-
 const handleClick = () => {
   emit('click')
 }
 </script>
-
-<style scoped>
-.notification-bell {
-  @apply relative;
-}
-
-.notification-bell__button {
-  @apply p-2;
-}
-
-.notification-bell__icon-wrapper {
-  @apply relative;
-}
-
-.notification-bell__icon {
-  @apply w-6 h-6 text-gray-600;
-}
-
-.notification-bell__badge {
-  @apply absolute -top-1 -right-1 flex items-center justify-center;
-  @apply min-w-[18px] h-[18px] px-1;
-  @apply text-xs font-bold text-white bg-red-500 rounded-full;
-  @apply border-2 border-white;
-}
-
-.notification-bell__status {
-  @apply absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white;
-}
-
-.notification-bell__status--connected {
-  @apply bg-green-500;
-}
-
-.notification-bell__status--disconnected {
-  @apply bg-gray-400;
-}
-</style>
