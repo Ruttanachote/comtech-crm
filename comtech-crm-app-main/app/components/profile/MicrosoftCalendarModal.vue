@@ -1,8 +1,11 @@
 <template>
-  <UModal v-model="isOpen" :ui="{ width: 'sm:max-w-lg' }">
-    <div class="p-0">
+  <UModal v-model="isOpen" :ui="{ 
+    width: 'sm:max-w-lg',
+    overlay: { background: 'bg-gray-900/50' }
+  }">
+    <div class="bg-white rounded-lg overflow-hidden">
       <!-- Header -->
-      <div class="flex items-center gap-4 px-6 py-4 border-b border-gray-100">
+      <div class="flex items-center gap-4 px-6 py-4 border-b border-gray-100 bg-white">
         <UButton
           variant="ghost"
           color="gray"
@@ -13,38 +16,39 @@
       </div>
 
       <!-- Content -->
-      <div class="p-6">
+      <div class="p-6 bg-white">
         <!-- Outlook / Office 365 Card -->
-        <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6">
+        <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6 shadow-sm">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
                 <UIcon name="i-heroicons-calendar" class="w-6 h-6 text-blue-600" />
               </div>
-              <div>
-                <h2 class="text-base font-semibold text-gray-900">Outlook / Office 365</h2>
-                <p class="text-sm text-gray-500">Connect to sync your events</p>
+              <div class="min-w-0">
+                <h2 class="text-base font-semibold text-gray-900 truncate">Outlook / Office 365</h2>
+                <p class="text-sm text-gray-500 truncate">Connect to sync your events</p>
               </div>
             </div>
-            <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-gray-400" />
+            <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-gray-400 flex-shrink-0" />
           </div>
         </div>
 
         <!-- Description -->
-        <div class="text-center py-6">
+        <div class="text-center py-6 bg-white">
           <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
             <UIcon name="i-heroicons-envelope" class="w-8 h-8 text-gray-400" />
           </div>
-          <p class="text-gray-600 max-w-md mx-auto">
+          <p class="text-gray-600 max-w-sm mx-auto leading-relaxed">
             Sync your Microsoft Outlook or Office 365 calendar events with our internal system automatically.
           </p>
         </div>
 
         <!-- Connect Button -->
-        <div class="flex justify-center mt-6">
+        <div class="flex justify-center mt-6 bg-white">
           <UButton
             color="gray"
             size="lg"
+            class="shadow-sm"
             :loading="isConnecting"
             @click="handleConnect"
           >
