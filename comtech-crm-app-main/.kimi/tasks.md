@@ -46,6 +46,17 @@
   - [x] Create Composable (useProfile.ts)
   - [x] Update AppHeaderMenu.vue to use ProfileDropdown
   - [x] Create MicrosoftCalendarModal with full Microsoft Sync UI
+- [x] Create Approvals Module
+  - [x] Create Types (approval.type.ts)
+  - [x] Create Pinia Store (approval.store.ts)
+  - [x] Create Service (approval.service.ts)
+  - [x] Create Mock Data (approval.mock.ts)
+  - [x] Create i18n (en.approval.json, th.approval.json)
+  - [x] Create Components (ApprovalStats, ApprovalCard, ApprovalList, ApprovalFilters, ApprovalConfirmModal)
+  - [x] Create Composable (useApproval.ts)
+  - [x] Create Page (approvals/index.vue)
+  - [x] Create Plugin (approval.ts)
+  - [x] Update nuxt.config.ts with approval i18n files
 
 ---
 
@@ -152,6 +163,47 @@
   - Description about syncing calendar events
   - "Connect Microsoft Account" button
 - **Commit**: `a32ba80` - fix: Use modal with Microsoft Sync UI instead of separate page
+
+### 2025-04-05 (Approvals Module)
+- **Status**: 🟢 Completed
+- **Feature**: Approvals Module (อนุมัติเอกสาร)
+- **Files Created**:
+  - `app/types/approval.type.ts` - TypeScript types (ApprovalDocument, ApprovalStats, ApprovalFilters)
+  - `app/stores/approval.store.ts` - Pinia store for approval state
+  - `app/services/approval.service.ts` - API service for approvals
+  - `app/data/mock/approval.mock.ts` - Mock approval documents and stats
+  - `app/composables/useApproval.ts` - Approval composable
+  - `app/components/approval/ApprovalStats.vue` - Stats cards component
+  - `app/components/approval/ApprovalCard.vue` - Individual approval card
+  - `app/components/approval/ApprovalList.vue` - List with pagination
+  - `app/components/approval/ApprovalFilters.vue` - Filter bar component
+  - `app/components/approval/ApprovalConfirmModal.vue` - Confirm approve/reject modal
+  - `app/pages/approvals/index.vue` - Main approvals page
+  - `app/plugins/approval.ts` - Approval service plugin
+  - `i18n/locales/en.approval.json` - English translations
+  - `i18n/locales/th.approval.json` - Thai translations
+- **Files Updated**:
+  - `nuxt.config.ts` - Added approval i18n files
+  - `.kimi/tasks.md` - Updated task checklist
+- **Design Features** (matching Figma 100%):
+  - Stats cards: All, Pending, Approved, Rejected with click-to-filter
+  - Document cards with document number, priority badge (ด่วน/ปานกลาง)
+  - Customer info, value (มูลค่า), sender (ผู้ส่ง), waiting at (รออนุมัติที่)
+  - Days pending indicator
+  - Approve/Reject action buttons
+  - Filter bar with search, status, type, priority, sort
+  - Export functionality (Excel/CSV)
+  - Pagination with page size selector
+  - Detail modal with full document info
+  - Confirm modal for approve/reject actions
+- **Features**:
+  - Full CRUD operations via Pinia store
+  - Filter by status, type, priority
+  - Search by document number, title, customer
+  - Sort by newest, oldest, value, priority
+  - i18n support (TH/EN)
+  - Responsive design
+  - Toast notifications for actions
 
 ---
 
