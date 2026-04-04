@@ -36,6 +36,15 @@
   - [x] Create Composable (useNotification.ts)
   - [x] Create WebSocket Server (notification.server.ts)
   - [x] Create README.md for notification system
+- [x] Create Profile Dropdown Component
+  - [x] Create Types (profile.type.ts)
+  - [x] Create Pinia Store (profile.store.ts)
+  - [x] Create Service (profile.service.ts)
+  - [x] Create Mock Data (profile.mock.ts)
+  - [x] Create i18n (en.profile.json, th.profile.json)
+  - [x] Create Component (ProfileDropdown.vue)
+  - [x] Create Composable (useProfile.ts)
+  - [x] Update AppHeaderMenu.vue to use ProfileDropdown
 
 ---
 
@@ -113,6 +122,29 @@
   - ✅ Pull ก่อน Push เสมอ
   - ✅ ตรวจสอบผลลัพธ์หลัง push ที่ GitHub
   - ✅ ทุกไฟล์ต้องอยู่ใน `comtech-crm-app-main/`
+
+### 2025-04-04 (Profile Dropdown)
+- **Status**: 🟢 Completed
+- **Feature**: Profile Dropdown Component
+- **Files Created**:
+  - `app/types/profile.type.ts` - TypeScript types (UserProfile, ExternalConnection)
+  - `app/stores/profile.store.ts` - Pinia store for profile state
+  - `app/services/profile.service.ts` - API service for profile
+  - `app/data/mock/profile.mock.ts` - Mock user data and connections
+  - `app/composables/useProfile.ts` - Profile composable
+  - `app/components/profile/ProfileDropdown.vue` - Main component
+  - `i18n/locales/en.profile.json` - English translations
+  - `i18n/locales/th.profile.json` - Thai translations
+- **Files Updated**:
+  - `nuxt.config.ts` - Added profile i18n files
+  - `app/layouts/AppHeaderMenu.vue` - Replaced old profile with ProfileDropdown
+- **Design Features** (matching Figma):
+  - Large avatar with user initials (SA)
+  - User name, email, and role badge
+  - Microsoft Calendar connection (Not connected)
+  - System Settings menu item
+  - Sign out button (red color with icon)
+- **Commit**: `42a2ff7` - feat: Add Profile Dropdown component
 
 ---
 
