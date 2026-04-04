@@ -10,7 +10,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '1',
     type: NotificationType.APPROVAL,
-    title: 'notifications.approvalRequired',
+    title: 'Approval Required',
     message: 'Contract APR-2024-1205 needs your approval',
     priority: NotificationPriority.HIGH,
     status: NotificationStatus.UNREAD,
@@ -23,7 +23,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '2',
     type: NotificationType.TASK,
-    title: 'notifications.taskDueSoon',
+    title: 'Task Due Soon',
     message: 'Follow up with Global Freight Solutions - Due in 2 hours',
     priority: NotificationPriority.HIGH,
     status: NotificationStatus.UNREAD,
@@ -36,7 +36,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '3',
     type: NotificationType.DEAL,
-    title: 'notifications.dealUpdated',
+    title: 'Deal Updated',
     message: 'Deal D-2024-089 moved to Negotiation stage',
     priority: NotificationPriority.MEDIUM,
     status: NotificationStatus.UNREAD,
@@ -49,7 +49,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '4',
     type: NotificationType.COMMENT,
-    title: 'notifications.newComment',
+    title: 'New Comment',
     message: 'Sarah Chen mentioned you in a comment',
     priority: NotificationPriority.MEDIUM,
     status: NotificationStatus.UNREAD,
@@ -62,7 +62,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '5',
     type: NotificationType.CUSTOMER,
-    title: 'notifications.newCustomer',
+    title: 'New Customer',
     message: 'Global Tech Industries added to your account',
     priority: NotificationPriority.LOW,
     status: NotificationStatus.UNREAD,
@@ -75,7 +75,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '6',
     type: NotificationType.SYSTEM,
-    title: 'notifications.systemUpdate',
+    title: 'System Update',
     message: 'Weekly report is now available for download',
     priority: NotificationPriority.LOW,
     status: NotificationStatus.READ,
@@ -88,7 +88,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '7',
     type: NotificationType.APPROVAL,
-    title: 'notifications.approvalCompleted',
+    title: 'Approval Completed',
     message: 'Your quotation Q-2024-156 has been approved',
     priority: NotificationPriority.MEDIUM,
     status: NotificationStatus.READ,
@@ -102,7 +102,7 @@ export const mockNotifications: Notification[] = [
   {
     id: '8',
     type: NotificationType.DEAL,
-    title: 'notifications.dealWon',
+    title: 'Deal Won',
     message: 'Congratulations! Deal D-2024-075 is closed-won ($2.5M)',
     priority: NotificationPriority.HIGH,
     status: NotificationStatus.READ,
@@ -202,7 +202,7 @@ export const generateMockNotification = (): Notification => {
   return {
     id: `new-${Date.now()}`,
     type: types[Math.floor(Math.random() * types.length)],
-    title: 'notifications.newNotification',
+    title: 'New Notification',
     message: 'This is a new real-time notification',
     priority: priorities[Math.floor(Math.random() * priorities.length)],
     status: NotificationStatus.UNREAD,
