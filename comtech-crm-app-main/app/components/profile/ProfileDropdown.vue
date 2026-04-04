@@ -100,6 +100,12 @@
         </button>
       </div>
     </div>
+
+    <!-- Microsoft Calendar Connect Modal -->
+    <MicrosoftCalendarConnect
+      v-model="showMicrosoftModal"
+      @connect="handleMicrosoftConnected"
+    />
   </div>
 </template>
 
@@ -108,11 +114,13 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProfileStore } from '~/stores/profile.store'
 import { mockUserProfile, mockConnections } from '~/data/mock/profile.mock'
+import MicrosoftCalendarConnect from './MicrosoftCalendarConnect.vue'
 
 const store = useProfileStore()
 const router = useRouter()
 
 const isOpen = ref(false)
+const showMicrosoftModal = ref(false)
 
 // Avatar color (based on initials)
 const avatarColor = computed(() => {
@@ -143,9 +151,13 @@ const handleClickOutside = (event: MouseEvent) => {
 
 // Handlers
 const handleConnectMicrosoft = () => {
-  // TODO: Implement Microsoft OAuth connection
-  console.log('Connect Microsoft Calendar')
+  showMicrosoftModal.value = true
   isOpen.value = false
+}
+
+const handleMicrosoftConnected = () => {
+  // Update connection status in store
+  store.updateConnection('microsoft', true, store.getUserEmail)
 }
 
 const handleSystemSettings = () => {
