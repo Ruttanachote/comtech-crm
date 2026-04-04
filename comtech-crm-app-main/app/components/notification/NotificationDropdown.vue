@@ -168,8 +168,8 @@ const handleNotificationClick = (notification: Notification) => {
     store.markAsRead(notification.id)
   }
   if (notification.metadata?.url) {
-    router.push(notification.metadata.url)
-    isOpen.value = false
+   // router.push(notification.metadata.url)
+   // isOpen.value = false
   }
 }
 
