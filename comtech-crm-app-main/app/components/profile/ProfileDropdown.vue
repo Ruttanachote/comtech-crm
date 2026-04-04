@@ -57,10 +57,10 @@
         <div class="py-2">
           <!-- Microsoft Calendar -->
           <button
-            class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors"
+            class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors cursor-pointer"
             @click="handleConnectMicrosoft"
           >
-            <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center ">
               <UIcon name="i-mdi-microsoft" class="w-5 h-5 text-blue-600" />
             </div>
             <div class="flex-1">
@@ -75,7 +75,7 @@
 
           <!-- System Settings -->
           <button
-            class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors"
+            class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors cursor-pointer"
             @click="handleSystemSettings"
           >
             <div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
@@ -90,7 +90,7 @@
 
           <!-- Sign Out -->
           <button
-            class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-red-50 transition-colors group"
+            class="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-red-50 transition-colors group cursor-pointer"
             @click="handleSignOut"
           >
             <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center group-hover:bg-red-100">
@@ -102,64 +102,60 @@
         </div>
       </div>
       <div v-else>
-        <!-- Header -->
-        <div class="bg-white border-b border-gray-200">
-          <div class="max-w-3xl mx-auto px-4 py-4">
-            <div class="flex items-center gap-4">
-              <UButton
-                variant="ghost"
-                color="gray"
-                icon="i-heroicons-arrow-left"
-                @click="goBack"
-              />
-              <h1 class="text-lg font-semibold text-gray-900">Microsoft Sync</h1>
-            </div>
-          </div>
-        </div>
+<div class="bg-white rounded-lg overflow-hidden">
+      <!-- Header -->
+      <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-100 bg-white">
+        <UButton
+          variant="ghost"
+          color="gray"
+          icon="i-heroicons-arrow-left"
+          class="p-1 cursor-pointer"
+          @click="openMicrosoft = false"
+        />
+        <h1 class="text-base font-semibold text-gray-900">Microsoft Sync</h1>
+      </div>
 
-        <!-- Content -->
-        <div class="max-w-3xl mx-auto px-4 py-8">
-          <!-- Outlook / Office 365 Card -->
-          <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                  <UIcon name="i-heroicons-calendar" class="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <h2 class="text-base font-semibold text-gray-900">Outlook / Office 365</h2>
-                  <p class="text-sm text-gray-500">Connect to sync your events</p>
-                </div>
+      <!-- Content -->
+      <div class="p-4 bg-white">
+        <!-- Outlook / Office 365 Card -->
+        <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0" >
+                <UIcon name="i-heroicons-calendar" class="w-5 h-5 text-blue-500"  />
               </div>
-              <UIcon name="i-heroicons-information-circle" class="w-5 h-5 text-gray-400" />
+              <div class="min-w-0">
+                <h2 class="text-sm font-semibold text-gray-900">Outlook / Office 365</h2>
+                <p class="text-xs text-gray-500">Connect to sync your events</p>
+              </div>
             </div>
-          </div>
-
-          <!-- Description -->
-          <div class="text-center py-8">
-            <div class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
-              <UIcon name="i-heroicons-envelope" class="w-8 h-8 text-gray-400" />
-            </div>
-            <p class="text-gray-600 max-w-md mx-auto">
-              Sync your Microsoft Outlook or Office 365 calendar events with our internal system automatically.
-            </p>
-          </div>
-
-          <!-- Connect Button -->
-          <div class="flex justify-center mt-8">
-            <UButton
-              color="gray"
-              size="lg"
-              :loading="isConnecting"
-              @click="handleConnect"
-            >
-              <template #leading>
-                <UIcon name="i-mdi-microsoft" class="w-5 h-5" />
-              </template>
-              Connect Microsoft Account
-            </UButton>
+            <UIcon name="i-heroicons-information-circle" class="w-4 h-4 text-gray-400 flex-shrink-0 mt-1"  />
           </div>
         </div>
+
+        <!-- Description -->
+        <div class="text-center py-2">
+          <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3">
+            <UIcon name="i-heroicons-envelope" class="w-5 h-5 text-gray-400" />
+          </div>
+          <p class="text-gray-600 text-xs max-w-[240px] mx-auto leading-relaxed">
+            Sync your Microsoft Outlook or Office 365 calendar events with our internal system automatically.
+          </p>
+        </div>
+
+        <!-- Connect Button -->
+        <div class="flex justify-center mt-6">
+          <UButton
+            class="bg-gray-800 hover:bg-gray-700 text-white text-sm px-5 py-2.5 rounded-lg flex items-center gap-2 cursor-pointer"
+            :loading="isConnecting"
+            @click="handleConnect"
+          >
+            <UIcon name="i-mdi-microsoft" class="w-4 h-4" />
+            Connect Microsoft Account
+          </UButton>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
