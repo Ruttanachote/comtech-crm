@@ -1,0 +1,132 @@
+{
+  "approval": {
+    "title": "All Approval Documents",
+    "subtitle": "Manage and track document approvals",
+    "search": "Search documents...",
+    "searchPlaceholder": "Search by document number, title, customer...",
+    
+    "stats": {
+      "all": "All",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    
+    "filters": {
+      "status": "Status",
+      "type": "Type",
+      "priority": "Priority",
+      "sort": "Sort by",
+      "clearAll": "Clear all filters"
+    },
+    
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "valueHigh": "Value: High to Low",
+      "valueLow": "Value: Low to High",
+      "priority": "Priority"
+    },
+    
+    "priority": {
+      "urgent": "Urgent",
+      "medium": "Medium",
+      "low": "Low",
+      "all": "All Priorities"
+    },
+    
+    "status": {
+      "all": "All Status",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    
+    "step": {
+      "finance_review": "Finance Review",
+      "final_approval": "Final Approval",
+      "sales_manager": "Sales Manager",
+      "operations": "Operations",
+      "legal_review": "Legal Review"
+    },
+    
+    "type": {
+      "all": "All Types",
+      "freight": "Freight",
+      "warehousing": "Warehousing",
+      "transport": "Transport",
+      "shipping": "Shipping",
+      "logistics": "Logistics",
+      "other": "Other"
+    },
+    
+    "card": {
+      "documentNumber": "Document No.",
+      "customer": "Customer",
+      "value": "Value",
+      "sender": "Sender",
+      "waitingAt": "Waiting at",
+      "daysAgo": "{days} days ago",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "actions": {
+        "reject": "Reject",
+        "approve": "Approve",
+        "view": "View Details",
+        "more": "More options"
+      }
+    },
+    
+    "detail": {
+      "title": "Approval Details",
+      "information": "Document Information",
+      "history": "Approval History",
+      "attachments": "Attachments",
+      "notes": "Notes",
+      "addNote": "Add Note"
+    },
+    
+    "confirm": {
+      "approveTitle": "Confirm Approval",
+      "approveMessage": "Are you sure you want to approve this document?",
+      "rejectTitle": "Confirm Rejection",
+      "rejectMessage": "Are you sure you want to reject this document?",
+      "comment": "Comment (optional)",
+      "commentPlaceholder": "Enter your comment...",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    
+    "empty": {
+      "title": "No approval documents",
+      "description": "There are no documents matching your criteria.",
+      "clearFilters": "Clear filters"
+    },
+    
+    "export": {
+      "title": "Export",
+      "excel": "Export to Excel",
+      "csv": "Export to CSV"
+    },
+    
+    "pagination": {
+      "showing": "Showing {from}-{to} of {total}",
+      "perPage": "per page",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    
+    "approveSuccess": "Document Approved",
+    "approveSuccessDesc": "The document has been approved successfully.",
+    "approveError": "Approval Failed",
+    "rejectSuccess": "Document Rejected",
+    "rejectSuccessDesc": "The document has been rejected successfully.",
+    "rejectError": "Rejection Failed",
+    
+    "errors": {
+      "fetchFailed": "Failed to load approval documents",
+      "actionFailed": "Action failed. Please try again.",
+      "networkError": "Network error. Please check your connection."
+    }
+  }
+}

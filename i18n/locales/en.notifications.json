@@ -1,0 +1,86 @@
+{
+  "notifications": {
+    "title": "Notifications",
+    "markAllAsRead": "Mark all as read",
+    "viewAll": "View all notifications",
+    "all": "All",
+    "unread": "Unread",
+    "empty": "No notifications",
+    "emptyDescription": "You don't have any notifications at the moment",
+    
+    "tabs": {
+      "all": "All ({count})",
+      "unread": "Unread ({count})"
+    },
+    
+    "types": {
+      "approval": "Approval",
+      "task": "Task",
+      "deal": "Deal",
+      "comment": "Comment",
+      "customer": "Customer",
+      "system": "System",
+      "quotation": "Quotation"
+    },
+    
+    "titles": {
+      "approvalRequired": "Approval Required",
+      "approvalCompleted": "Approval Completed",
+      "taskDueSoon": "Task Due Soon",
+      "taskCompleted": "Task Completed",
+      "dealUpdated": "Deal Updated",
+      "dealWon": "Deal Won",
+      "dealLost": "Deal Lost",
+      "newComment": "New Comment",
+      "newCustomer": "New Customer",
+      "systemUpdate": "System Update",
+      "quotationApproved": "Quotation Approved",
+      "quotationRejected": "Quotation Rejected",
+      "newNotification": "New Notification"
+    },
+    
+    "priority": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    
+    "status": {
+      "read": "Read",
+      "unread": "Unread"
+    },
+    
+    "time": {
+      "justNow": "Just now",
+      "minutesAgo": "{count} minute ago | {count} minutes ago",
+      "hoursAgo": "{count} hour ago | {count} hours ago",
+      "daysAgo": "{count} day ago | {count} days ago",
+      "weeksAgo": "{count} week ago | {count} weeks ago",
+      "monthsAgo": "{count} month ago | {count} months ago"
+    },
+    
+    "actions": {
+      "markAsRead": "Mark as read",
+      "markAsUnread": "Mark as unread",
+      "delete": "Delete",
+      "view": "View",
+      "approve": "Approve",
+      "reject": "Reject"
+    },
+    
+    "websocket": {
+      "connected": "Connected",
+      "disconnected": "Disconnected",
+      "connecting": "Connecting...",
+      "error": "Connection error"
+    },
+    
+    "messages": {
+      "markAsReadSuccess": "Marked as read",
+      "markAllAsReadSuccess": "All notifications marked as read",
+      "deleteSuccess": "Notification deleted",
+      "deleteAllSuccess": "All notifications deleted",
+      "error": "An error occurred"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "department": "Department",
+    "phone": "Phone",
+    
+    "menu": {
+      "microsoftCalendar": "Microsoft Calendar",
+      "notConnected": "Not connected",
+      "systemSettings": "System Settings",
+      "signOut": "Sign out"
+    },
+    
+    "actions": {
+      "connect": "Connect",
+      "disconnect": "Disconnect",
+      "editProfile": "Edit Profile",
+      "changePassword": "Change Password",
+      "uploadAvatar": "Upload Photo"
+    },
+    
+    "messages": {
+      "connectSuccess": "Connected successfully",
+      "disconnectSuccess": "Disconnected successfully",
+      "updateSuccess": "Profile updated successfully",
+      "signOutConfirm": "Are you sure you want to sign out?"
+    }
+  }
+}

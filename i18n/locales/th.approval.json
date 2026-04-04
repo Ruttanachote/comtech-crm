@@ -1,0 +1,132 @@
+{
+  "approval": {
+    "title": "เอกสารอนุมัติทั้งหมด",
+    "subtitle": "จัดการและติดตามการอนุมัติเอกสาร",
+    "search": "ค้นหาเอกสาร...",
+    "searchPlaceholder": "ค้นหาตามเลขที่เอกสาร ชื่อเรื่อง ลูกค้า...",
+    
+    "stats": {
+      "all": "ทั้งหมด",
+      "pending": "รอดำเนินการ",
+      "approved": "อนุมัติ",
+      "rejected": "ปฏิเสธ"
+    },
+    
+    "filters": {
+      "status": "สถานะ",
+      "type": "ประเภท",
+      "priority": "ความสำคัญ",
+      "sort": "เรียงลำดับ",
+      "clearAll": "ล้างตัวกรองทั้งหมด"
+    },
+    
+    "sort": {
+      "newest": "ใหม่ล่าสุด",
+      "oldest": "เก่าที่สุด",
+      "valueHigh": "มูลค่า: สูงไปต่ำ",
+      "valueLow": "มูลค่า: ต่ำไปสูง",
+      "priority": "ความสำคัญ"
+    },
+    
+    "priority": {
+      "urgent": "ด่วน",
+      "medium": "ปานกลาง",
+      "low": "ต่ำ",
+      "all": "ทุกความสำคัญ"
+    },
+    
+    "status": {
+      "all": "ทุกสถานะ",
+      "pending": "รอดำเนินการ",
+      "approved": "อนุมัติ",
+      "rejected": "ปฏิเสธ"
+    },
+    
+    "step": {
+      "finance_review": "Finance Review",
+      "final_approval": "Final Approval",
+      "sales_manager": "Sales Manager",
+      "operations": "Operations",
+      "legal_review": "Legal Review"
+    },
+    
+    "type": {
+      "all": "ทุกประเภท",
+      "freight": "ขนส่งสินค้า",
+      "warehousing": "คลังสินค้า",
+      "transport": "ขนส่ง",
+      "shipping": "การขนส่งทางเรือ",
+      "logistics": "โลจิสติกส์",
+      "other": "อื่นๆ"
+    },
+    
+    "card": {
+      "documentNumber": "เลขที่เอกสาร",
+      "customer": "ลูกค้า",
+      "value": "มูลค่า",
+      "sender": "ผู้ส่ง",
+      "waitingAt": "รออนุมัติที่",
+      "daysAgo": "{days} วันที่ผ่านมา",
+      "today": "วันนี้",
+      "yesterday": "เมื่อวาน",
+      "actions": {
+        "reject": "ปฏิเสธ",
+        "approve": "อนุมัติ",
+        "view": "ดูรายละเอียด",
+        "more": "ตัวเลือกเพิ่มเติม"
+      }
+    },
+    
+    "detail": {
+      "title": "รายละเอียดการอนุมัติ",
+      "information": "ข้อมูลเอกสาร",
+      "history": "ประวัติการอนุมัติ",
+      "attachments": "ไฟล์แนบ",
+      "notes": "บันทึก",
+      "addNote": "เพิ่มบันทึก"
+    },
+    
+    "confirm": {
+      "approveTitle": "ยืนยันการอนุมัติ",
+      "approveMessage": "คุณแน่ใจหรือไม่ที่จะอนุมัติเอกสารนี้?",
+      "rejectTitle": "ยืนยันการปฏิเสธ",
+      "rejectMessage": "คุณแน่ใจหรือไม่ที่จะปฏิเสธเอกสารนี้?",
+      "comment": "ความคิดเห็น (ไม่บังคับ)",
+      "commentPlaceholder": "ระบุความคิดเห็นของคุณ...",
+      "cancel": "ยกเลิก",
+      "confirm": "ยืนยัน"
+    },
+    
+    "empty": {
+      "title": "ไม่พบเอกสารอนุมัติ",
+      "description": "ไม่มีเอกสารที่ตรงกับเงื่อนไขที่คุณระบุ",
+      "clearFilters": "ล้างตัวกรอง"
+    },
+    
+    "export": {
+      "title": "ส่งออก",
+      "excel": "ส่งออกเป็น Excel",
+      "csv": "ส่งออกเป็น CSV"
+    },
+    
+    "pagination": {
+      "showing": "แสดง {from}-{to} จาก {total}",
+      "perPage": "ต่อหน้า",
+      "previous": "ก่อนหน้า",
+      "next": "ถัดไป"
+    },
+    
+    "approveSuccess": "อนุมัติสำเร็จ",
+    "approveSuccessDesc": "เอกสารได้รับการอนุมัติเรียบร้อยแล้ว",
+    "approveError": "การอนุมัติล้มเหลว",
+    "rejectSuccess": "ปฏิเสธสำเร็จ",
+    "rejectSuccessDesc": "เอกสารถูกปฏิเสธเรียบร้อยแล้ว",
+    "rejectError": "การปฏิเสธล้มเหลว",
+    
+    "errors": {
+      "fetchFailed": "ไม่สามารถโหลดเอกสารอนุมัติได้",
+      "actionFailed": "การดำเนินการล้มเหลว กรุณาลองใหม่อีกครั้ง",
+      "networkError": "ข้อผิดพลาดเครือข่าย กรุณาตรวจสอบการเชื่อมต่อ"
+    }
+  }
+}
