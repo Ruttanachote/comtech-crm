@@ -45,7 +45,7 @@
   - [x] Create Component (ProfileDropdown.vue)
   - [x] Create Composable (useProfile.ts)
   - [x] Update AppHeaderMenu.vue to use ProfileDropdown
-  - [x] Create MicrosoftCalendarConnect modal (with z-[100] fix)
+  - [x] Create Microsoft Sync page (/settings/microsoft-sync)
 
 ---
 
@@ -134,6 +134,7 @@
   - `app/data/mock/profile.mock.ts` - Mock user data and connections
   - `app/composables/useProfile.ts` - Profile composable
   - `app/components/profile/ProfileDropdown.vue` - Main component
+  - `app/pages/settings/microsoft-sync.vue` - Microsoft Sync page
   - `i18n/locales/en.profile.json` - English translations
   - `i18n/locales/th.profile.json` - Thai translations
 - **Files Updated**:
@@ -142,10 +143,15 @@
 - **Design Features** (matching Figma):
   - Large avatar with user initials (SA)
   - User name, email, and role badge
-  - Microsoft Calendar connection (Not connected)
+  - Microsoft Calendar connection (Not connected) - navigates to /settings/microsoft-sync
   - System Settings menu item
   - Sign out button (red color with icon)
-- **Commit**: `42a2ff7` - feat: Add Profile Dropdown component
+- **Microsoft Sync Page Features**:
+  - Back button with "Microsoft Sync" title
+  - Outlook / Office 365 card with info icon
+  - Description about syncing calendar events
+  - "Connect Microsoft Account" button
+- **Commit**: `b55ad1e` - feat: Add Microsoft Sync page and update ProfileDropdown navigation
 
 ---
 
