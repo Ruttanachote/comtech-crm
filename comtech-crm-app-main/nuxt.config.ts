@@ -150,9 +150,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'en',
     locales: [
-      { code: 'en', name: 'English', files: ['en.json', 'en.dashboard.json'] },
-      { code: 'th', name: 'Thai', files: ['th.json', 'th.dashboard.json'] },
-    ],
+      { code: 'en', name: 'English', files: ['en.json', 'en.dashboard.json', 'en.notifications.json'] },
+      { code: 'th', name: 'Thai', files: ['th.json', 'th.dashboard.json', 'th.notifications.json'] },
     strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,
