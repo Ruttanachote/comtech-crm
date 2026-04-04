@@ -45,7 +45,6 @@
   - [x] Create Component (ProfileDropdown.vue)
   - [x] Create Composable (useProfile.ts)
   - [x] Update AppHeaderMenu.vue to use ProfileDropdown
-  - [x] Create MicrosoftCalendarConnect modal
 
 ---
 
