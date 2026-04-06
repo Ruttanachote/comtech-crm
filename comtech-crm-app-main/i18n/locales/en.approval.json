@@ -84,6 +84,13 @@
       "document": "Document",
       "preview": "Preview"
     },
+    "activity": {
+      "submitted": "submitted the document",
+      "approved": "approved the document",
+      "rejected": "rejected the document",
+      "requestedMoreInfo": "requested more information",
+      "commented": "added a comment"
+    },
     "steps": {
       "submitted": "Submitted",
       "sales_manager": "Sales Manager",
@@ -98,15 +105,22 @@
       "rejectSuccess": "Document rejected successfully",
       "requestMoreInfoSuccess": "Request for more info sent successfully",
       "error": "An error occurred. Please try again.",
-      "confirmApprove": "Are you sure you want to approve this document?",
-      "confirmReject": "Are you sure you want to reject this document?",
+      "confirmApprove": "Confirm Approval",
+      "confirmApproveMessage": "Are you sure you want to approve this document? This action cannot be undone.",
+      "confirmReject": "Confirm Rejection",
+      "confirmRejectMessage": "Are you sure you want to reject this document? This action cannot be undone.",
       "noDocuments": "No documents attached",
-      "noComments": "No comments yet"
+      "noComments": "No comments yet",
+      "fileTooLarge": "File {name} is too large (max 10MB)"
     },
     "empty": {
       "title": "No approvals found",
       "description": "There are no approval documents matching your criteria",
       "button": "Clear Filters"
+    },
+    "notFound": {
+      "title": "Approval not found",
+      "description": "The approval document you are looking for does not exist or has been removed."
     }
   }
 }

@@ -34,15 +34,25 @@
           </p>
         </div>
 
-        <!-- Download Button -->
-        <UButton
-          color="gray"
-          variant="soft"
-          @click="$emit('download')"
-        >
-          <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 mr-2" />
-          {{ t('approval.detail.download') }}
-        </UButton>
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-2">
+          <UButton
+            color="gray"
+            variant="soft"
+            @click="scrollToActivity"
+          >
+            <UIcon name="i-heroicons-clock" class="w-4 h-4 mr-2" />
+            {{ t('approval.detail.activity') }}
+          </UButton>
+          <UButton
+            color="gray"
+            variant="soft"
+            @click="$emit('download')"
+          >
+            <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 mr-2" />
+            {{ t('approval.detail.download') }}
+          </UButton>
+        </div>
       </div>
 
       <!-- Info Grid -->
@@ -202,6 +212,14 @@ const emit = defineEmits<{
   (e: 'reject', data: { comment: string; attachments: File[] }): void
   (e: 'requestMoreInfo', data: { comment: string; attachments: File[] }): void
 }>()
+
+// Scroll to activity section
+function scrollToActivity() {
+  const activitySection = document.querySelector('.activity-section')
+  if (activitySection) {
+    activitySection.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 const { t, locale } = useI18n()
 
