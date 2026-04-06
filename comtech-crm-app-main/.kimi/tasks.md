@@ -61,6 +61,24 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: History Modal UI - match Figma exactly)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `9c7673f` - "fix: update History Modal to match Figma design"
+- **Figma Design**: Deal Activity popup with:
+  - Title: "กิจกรรมดีล" / "Deal Activity"
+  - Subtitle: "ประวัติการเปลี่ยนแปลงและกิจกรรมทั้งหมด"
+  - Activity count badge
+  - Each activity: avatar, timestamp, badge, description, user
+- **Changes**:
+  - Update History Modal UI to match Figma
+  - Add forwarded action type to i18n
+  - Update activity translations
+- **Files changed**:
+  - `app/pages/approvals/index.vue`
+  - `i18n/locales/en.approval.json`
+  - `i18n/locales/th.approval.json`
+
 ### 2025-04-06 (Fix: add Activity History button - match Figma)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
