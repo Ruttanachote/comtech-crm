@@ -61,6 +61,15 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: syntax error in nuxt.config.ts)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `687f9d0` - "fix: syntax error in nuxt.config.ts - missing closing bracket"
+- **Error**: `ParseError: Unexpected token at line 164:2`
+- **Cause**: Missing `]` to close locales array in i18n config
+- **Solution**: Add missing closing bracket
+- **Files changed**: `nuxt.config.ts`
+
 ### 2025-04-06 (Fix: i18n approval files not loaded)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
