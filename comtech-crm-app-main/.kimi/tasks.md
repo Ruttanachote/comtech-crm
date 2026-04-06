@@ -61,6 +61,14 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: i18n approval files not loaded)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `aac37e3` - "fix: add approval i18n files to nuxt.config.ts"
+- **Problem**: `en.approval.json` and `th.approval.json` not in i18n config
+- **Solution**: Add files to locales array in nuxt.config.ts
+- **Files changed**: `nuxt.config.ts`
+
 ### 2025-04-06 (Fix: remove auth middleware)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
