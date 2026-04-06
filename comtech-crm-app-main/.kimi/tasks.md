@@ -5,6 +5,7 @@
 ### 🟢 Completed
 - [x] Create and push new branch "layout"
 - [x] Create and push new branch "approve" with full approval system
+- [x] Fix: rename approve to approvals (folder and routes)
 
 ### 🔴 Pending
 - [ ] Review all existing components
@@ -59,6 +60,17 @@
 ---
 
 ## Task History
+
+### 2025-04-06 (Fix: approve → approvals)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `7617a8e` - "fix: rename approve to approvals"
+- **Problem**: Menu didn't work because folder was `pages/approve` but menu pointed to `/approvals`
+- **Solution**:
+  - Renamed folder: `pages/approve` → `pages/approvals`
+  - Updated route: `/approve/${id}` → `/approvals/${id}`
+  - Updated route: `/approve` → `/approvals`
+- **Result**: Menu and navigation now work correctly
 
 ### 2025-04-06 (Approval System - PUSHED TO GITHUB)
 - **Status**: 🟢 Completed & Pushed
