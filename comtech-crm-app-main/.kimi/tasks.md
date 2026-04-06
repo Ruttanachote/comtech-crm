@@ -61,6 +61,15 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: remove auth middleware)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `86ec054` - "fix: remove auth middleware from approval pages"
+- **Changes**:
+  - Removed `middleware: ['auth']` from `/approvals/index.vue`
+  - Removed `middleware: ['auth']` from `/approvals/[id].vue`
+- **Reason**: Pages now accessible without authentication for testing
+
 ### 2025-04-06 (Fix: approve → approvals)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
