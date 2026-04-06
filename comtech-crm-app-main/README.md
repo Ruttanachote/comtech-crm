@@ -50,12 +50,49 @@ The application will be available at `http://localhost:3000`
 ## Project Structure
 
 ```
-cosmic-crm/
-├── app/              # Nuxt app directory (pages, components, layouts)
-├── server/           # Server-side code (API routes, middleware)
-├── public/           # Static assets
-└── nuxt.config.ts    # Nuxt configuration
+comtech-crm-app-main/
+├── app/                        # Nuxt app directory
+│   ├── components/             # Vue components
+│   │   ├── approval/          # Approval system components
+│   │   ├── common/            # Common UI components
+│   │   └── ...
+│   ├── pages/                  # Application pages
+│   │   ├── approve/           # Approval management pages
+│   │   ├── dashboard/         # Dashboard pages
+│   │   └── ...
+│   ├── stores/                 # Pinia stores
+│   ├── services/               # API services
+│   ├── types/                  # TypeScript types
+│   └── data/mock/              # Mock data
+├── i18n/locales/               # Internationalization
+├── public/                     # Static assets
+└── nuxt.config.ts              # Nuxt configuration
 ```
+
+## Features
+
+### Approval Management System
+
+A comprehensive approval workflow system for managing document approvals:
+
+- **Statistics Dashboard**: View total, pending, approved, and rejected counts
+- **Approval List**: Filter and search approvals by status, type, priority
+- **Approval Detail**: Complete workflow timeline, documents, and activity history
+- **Actions**: Approve, reject, or request more information
+- **Document Management**: Preview and download attached documents
+- **Comments**: Add comments and track approval history
+- **i18n Support**: Full Thai and English language support
+
+**Pages:**
+- `/approve` - Approval list with filters and statistics
+- `/approve/:id` - Approval detail with workflow and actions
+
+**Workflow Steps:**
+1. Submitted
+2. Sales Manager Review
+3. Finance Review
+4. Legal & Compliance
+5. Final Approval
 
 ## Development
 
