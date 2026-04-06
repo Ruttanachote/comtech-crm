@@ -61,6 +61,16 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: button styling for better visibility)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `4f16d02` - "fix: improve button styling for clock and export buttons"
+- **Problem**: Buttons didn't look clickable
+- **Solution**: 
+  - Change variant from soft to solid
+  - Add size md and padding
+- **Files changed**: `app/pages/approvals/index.vue`
+
 ### 2025-04-06 (Fix: History Modal UI - match Figma exactly)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
