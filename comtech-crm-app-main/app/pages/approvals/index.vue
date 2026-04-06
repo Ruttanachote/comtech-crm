@@ -140,69 +140,77 @@
       </UCard>
     </UModal>
 
-    <!-- History Modal -->
-    <UModal v-model="showHistory" :ui="{ width: 'lg' }">
-      <UCard>
-        <template #header>
-          <div class="flex items-center justify-between">
+    <!-- History Modal (Native) -->
+    <Teleport to="body">
+      <div
+        v-if="showHistory"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+      >
+        <!-- Backdrop -->
+        <div
+          class="absolute inset-0 bg-black/50"
+          @click="showHistory = false"
+        />
+
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
+          <!-- Header -->
+          <div class="flex items-center justify-between p-4 border-b border-gray-100">
             <div>
               <h3 class="text-lg font-semibold text-gray-900">{{ t('approval.history.title') }}</h3>
               <p class="text-sm text-gray-500">{{ t('approval.history.subtitle') }}</p>
             </div>
-            <UButton
-              color="gray"
-              variant="ghost"
-              size="sm"
+            <button
+              class="p-1 hover:bg-gray-100 rounded-lg transition-colors"
               @click="showHistory = false"
             >
-              <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
-            </UButton>
+              <UIcon name="i-heroicons-x-mark" class="w-5 h-5 text-gray-500" />
+            </button>
           </div>
-        </template>
 
-        <!-- Activity Count -->
-        <div class="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100">
-          <span class="text-sm font-medium text-gray-900">{{ t('approval.history.title') }}</span>
-          <UBadge color="primary" variant="soft" size="sm">{{ recentActivities.length }}</UBadge>
-          <span class="text-sm text-gray-500">{{ t('approval.history.items') }}</span>
-        </div>
+          <!-- Activity Count -->
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-100">
+            <span class="text-sm font-medium text-gray-900">{{ t('approval.history.title') }}</span>
+            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">{{ recentActivities.length }}</span>
+            <span class="text-sm text-gray-500">{{ t('approval.history.items') }}</span>
+          </div>
 
-        <!-- Activity List -->
-        <div class="max-h-96 overflow-y-auto space-y-4">
-          <div
-            v-for="activity in recentActivities"
-            :key="activity.id"
-            class="flex gap-3"
-          >
-            <!-- Avatar -->
-            <UAvatar
-              :src="activity.user.avatar"
-              :alt="activity.user.name"
-              size="sm"
-            />
+          <!-- Activity List -->
+          <div class="overflow-y-auto p-4 space-y-4 max-h-96">
+            <div
+              v-for="activity in recentActivities"
+              :key="activity.id"
+              class="flex gap-3"
+            >
+              <!-- Avatar -->
+              <img
+                :src="activity.user.avatar"
+                :alt="activity.user.name"
+                class="w-8 h-8 rounded-full object-cover flex-shrink-0"
+              />
 
-            <!-- Content -->
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-0.5">
-                <span class="text-xs text-gray-400">{{ formatDateTime(activity.timestamp) }}</span>
+              <!-- Content -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="text-xs text-gray-400">{{ formatDateTime(activity.timestamp) }}</span>
+                </div>
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                  <span
+                    class="px-2 py-0.5 text-xs font-medium rounded-full"
+                    :class="getActivityBadgeClass(activity.action)"
+                  >
+                    {{ t(`approval.activity.${activity.action}`) }}
+                  </span>
+                  <span class="text-sm font-medium text-gray-900">Approval Request</span>
+                </div>
+                <p class="text-sm text-gray-600">{{ activity.comment || t('approval.history.noDescription') }}</p>
+                <p class="text-xs text-gray-500 mt-1">{{ activity.user.name }}</p>
               </div>
-              <div class="flex items-center gap-2 mb-1">
-                <UBadge
-                  :color="getActivityColor(activity.action)"
-                  variant="soft"
-                  size="xs"
-                >
-                  {{ t(`approval.activity.${activity.action}`) }}
-                </UBadge>
-                <span class="text-sm font-medium text-gray-900">Approval Request</span>
-              </div>
-              <p class="text-sm text-gray-600">{{ activity.comment || t('approval.history.noDescription') }}</p>
-              <p class="text-xs text-gray-500 mt-1">{{ activity.user.name }}</p>
             </div>
           </div>
         </div>
-      </UCard>
-    </UModal>
+      </div>
+    </Teleport>
 
   </div>
 </template>
@@ -291,6 +299,21 @@ function getActivityColor(action: string): string {
       return 'amber'
     default:
       return 'gray'
+  }
+}
+
+function getActivityBadgeClass(action: string): string {
+  switch (action) {
+    case 'approved':
+      return 'bg-emerald-100 text-emerald-700'
+    case 'rejected':
+      return 'bg-red-100 text-red-700'
+    case 'forwarded':
+      return 'bg-blue-100 text-blue-700'
+    case 'submitted':
+      return 'bg-amber-100 text-amber-700'
+    default:
+      return 'bg-gray-100 text-gray-700'
   }
 }
 
