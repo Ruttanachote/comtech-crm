@@ -1,0 +1,112 @@
+{
+  "approval": {
+    "title": "เอกสารอนุมัติทั้งหมด",
+    "subtitle": "จัดการและติดตามการอนุมัติเอกสาร",
+    "stats": {
+      "total": "ทั้งหมด",
+      "pending": "รอดำเนินการ",
+      "approved": "อนุมัติ",
+      "rejected": "ปฏิเสธ"
+    },
+    "filters": {
+      "status": "สถานะ",
+      "type": "ประเภท",
+      "priority": "ความสำคัญ",
+      "sortBy": "เรียงลำดับ",
+      "search": "ค้นหาเอกสารอนุมัติ..."
+    },
+    "priority": {
+      "urgent": "ด่วน",
+      "high": "สูง",
+      "medium": "ปานกลาง",
+      "low": "ต่ำ"
+    },
+    "status": {
+      "pending": "รอดำเนินการ",
+      "approved": "อนุมัติ",
+      "rejected": "ปฏิเสธ",
+      "request_more_info": "ขอข้อมูลเพิ่มเติม"
+    },
+    "type": {
+      "contract": "สัญญา",
+      "quotation": "ใบเสนอราคา",
+      "invoice": "ใบแจ้งหนี้",
+      "purchase_order": "ใบสั่งซื้อ",
+      "expense": "ค่าใช้จ่าย",
+      "discount": "ส่วนลด",
+      "other": "อื่นๆ"
+    },
+    "list": {
+      "documentNumber": "เลขที่เอกสาร",
+      "title": "หัวข้อ",
+      "customer": "ลูกค้า",
+      "value": "มูลค่า",
+      "sender": "ผู้ส่ง",
+      "currentStep": "รออนุมัติที่",
+      "daysWaiting": "วันที่ผ่านมา",
+      "actions": {
+        "reject": "ปฏิเสธ",
+        "approve": "อนุมัติ",
+        "view": "ดูรายละเอียด"
+      }
+    },
+    "detail": {
+      "backToList": "กลับไปหน้าอนุมัติ",
+      "download": "ดาวน์โหลด",
+      "documentInfo": "ข้อมูลเอกสาร",
+      "contractDetails": "รายละเอียดสัญญา",
+      "workflow": "ขั้นตอนการอนุมัติ",
+      "documents": "เอกสาร",
+      "activity": "ประวัติกิจกรรม",
+      "comments": "ความคิดเห็น",
+      "actions": {
+        "title": "ตรวจสอบและอนุมัติ",
+        "subtitle": "อนุมัตินี้รอตรวจสอบของคุณในฐานะ",
+        "comment": "เพิ่มความคิดเห็น",
+        "commentPlaceholder": "กรอกความคิดเห็นของคุณ...",
+        "attachments": "แนบไฟล์ (ไม่บังคับ)",
+        "attachDocument": "แนบเอกสาร",
+        "approve": "อนุมัติ",
+        "reject": "ปฏิเสธ",
+        "requestMoreInfo": "ขอข้อมูลเพิ่มเติม"
+      }
+    },
+    "fields": {
+      "approvalCode": "รหัสอนุมัติ",
+      "totalValue": "มูลค่ารวม",
+      "businessUnit": "หน่วยธุรกิจ",
+      "serviceType": "ประเภทบริการ",
+      "contractType": "ประเภทสัญญา",
+      "duration": "ระยะเวลา",
+      "startDate": "วันที่เริ่มต้น",
+      "endDate": "วันที่สิ้นสุด",
+      "paymentTerms": "เงื่อนไขการชำระเงิน",
+      "document": "เอกสาร",
+      "preview": "ดูตัวอย่าง"
+    },
+    "steps": {
+      "submitted": "ส่งแล้ว",
+      "sales_manager": "จัดการฝ่ายขาย",
+      "finance_review": "ตรวจสอบทางการเงิน",
+      "legal_compliance": "กฎหมายและการปฏิบัติตาม",
+      "final_approval": "อนุมัติขั้นสุดท้าย",
+      "completed": "เสร็จสมบูรณ์",
+      "rejected": "ปฏิเสธ"
+    },
+    "messages": {
+      "approveSuccess": "อนุมัติเอกสารสำเร็จ",
+      "rejectSuccess": "ปฏิเสธเอกสารสำเร็จ",
+      "requestMoreInfoSuccess": "ส่งคำขอข้อมูลเพิ่มเติมสำเร็จ",
+      "error": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง",
+      "confirmApprove": "คุณแน่ใจหรือไม่ว่าต้องการอนุมัติเอกสารนี้?",
+      "confirmReject": "คุณแน่ใจหรือไม่ว่าต้องการปฏิเสธเอกสารนี้?",
+      "noDocuments": "ไม่มีเอกสารแนบ",
+      "noComments": "ยังไม่มีความคิดเห็น"
+    },
+    "empty": {
+      "title": "ไม่พบเอกสารอนุมัติ",
+      "description": "ไม่มีเอกสารอนุมัติที่ตรงกับเงื่อนไขของคุณ",
+      "button": "ล้างตัวกรอง"
+    }
+  }
+}

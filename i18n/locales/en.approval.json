@@ -1,0 +1,112 @@
+{
+  "approval": {
+    "title": "All Approval Documents",
+    "subtitle": "Manage and track document approvals",
+    "stats": {
+      "total": "Total",
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "filters": {
+      "status": "Status",
+      "type": "Type",
+      "priority": "Priority",
+      "sortBy": "Sort By",
+      "search": "Search approvals..."
+    },
+    "priority": {
+      "urgent": "Urgent",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "request_more_info": "Request More Info"
+    },
+    "type": {
+      "contract": "Contract",
+      "quotation": "Quotation",
+      "invoice": "Invoice",
+      "purchase_order": "Purchase Order",
+      "expense": "Expense",
+      "discount": "Discount",
+      "other": "Other"
+    },
+    "list": {
+      "documentNumber": "Document No.",
+      "title": "Title",
+      "customer": "Customer",
+      "value": "Value",
+      "sender": "Sender",
+      "currentStep": "Waiting at",
+      "daysWaiting": "days ago",
+      "actions": {
+        "reject": "Reject",
+        "approve": "Approve",
+        "view": "View Details"
+      }
+    },
+    "detail": {
+      "backToList": "Back to Approvals",
+      "download": "Download",
+      "documentInfo": "Document Information",
+      "contractDetails": "Contract Details",
+      "workflow": "Approval Workflow",
+      "documents": "Documents",
+      "activity": "Activity History",
+      "comments": "Comments",
+      "actions": {
+        "title": "Review and Approve",
+        "subtitle": "This approval is waiting for your review as",
+        "comment": "Add Comment",
+        "commentPlaceholder": "Enter your comment...",
+        "attachments": "Attachments (Optional)",
+        "attachDocument": "Attach Document",
+        "approve": "Approve",
+        "reject": "Reject",
+        "requestMoreInfo": "Request More Info"
+      }
+    },
+    "fields": {
+      "approvalCode": "Approval Code",
+      "totalValue": "Total Value",
+      "businessUnit": "Business Unit",
+      "serviceType": "Service Type",
+      "contractType": "Contract Type",
+      "duration": "Duration",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "paymentTerms": "Payment Terms",
+      "document": "Document",
+      "preview": "Preview"
+    },
+    "steps": {
+      "submitted": "Submitted",
+      "sales_manager": "Sales Manager",
+      "finance_review": "Finance Review",
+      "legal_compliance": "Legal & Compliance",
+      "final_approval": "Final Approval",
+      "completed": "Completed",
+      "rejected": "Rejected"
+    },
+    "messages": {
+      "approveSuccess": "Document approved successfully",
+      "rejectSuccess": "Document rejected successfully",
+      "requestMoreInfoSuccess": "Request for more info sent successfully",
+      "error": "An error occurred. Please try again.",
+      "confirmApprove": "Are you sure you want to approve this document?",
+      "confirmReject": "Are you sure you want to reject this document?",
+      "noDocuments": "No documents attached",
+      "noComments": "No comments yet"
+    },
+    "empty": {
+      "title": "No approvals found",
+      "description": "There are no approval documents matching your criteria",
+      "button": "Clear Filters"
+    }
+  }
+}

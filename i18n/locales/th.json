@@ -1,0 +1,221 @@
+{
+  "common": {
+    "all": "ทั้งหมด",
+    "search": "ค้นหา",
+    "clear": "ล้าง",
+    "export": "ส่งออก",
+    "page": "หน้า",
+    "of": "จาก",
+    "today": "วันนี้",
+    "yesterday": "เมื่อวาน",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "success": "สำเร็จ",
+    "error": "ผิดพลาด",
+    "info": "ข้อมูล",
+    "comingSoon": "เร็วๆ นี้",
+    "activeFilters": "ตัวกรองที่ใช้งาน",
+    "newest": "ใหม่สุด",
+    "oldest": "เก่าสุด",
+    "priority": "ความสำคัญ",
+    "value": "มูลค่า"
+  },
+  "general": {
+    "profile": "ข้อมูลส่วนตัว",
+    "language": "ภาษา",
+    "appearance": "รูปแบบการแสดงผล",
+    "logout": "ออกจากระบบ",
+    "back": "กลับ",
+    "dark-mode": "ลดความสว่าง",
+    "search-menu": "ค้นหาเมนู",
+    "home": "หน้าหลัก"
+  },
+  "header": {
+    "tasks": "งาน",
+    "search_placeholder": "ค้นหา",
+    "help": "ช่วยเหลือ",
+    "dark_mode": "โหมดมืด",
+    "own_customers_only": "ลูกค้าของตัวเองเท่านั้น"
+  },
+  "nav": {
+    "dashboard": "แดชบอร์ด",
+    "dashboard_catalog": "รวมแดชบอร์ด",
+    "customer_insights": "ข้อมูลเชิงลึกลูกค้า",
+    "customer_intelligence": "ข้อมูลอัจฉริยะลูกค้า",
+    "reports_performance": "รายงานและประสิทธิภาพ",
+    "calendar": "ปฏิทิน",
+    "customers": "ลูกค้า",
+    "leads": "ผู้สนใจ",
+    "deals": "ดีลการขาย",
+    "quotations": "ใบเสนอราคา",
+    "proposals": "ข้อเสนอโครงการ",
+    "contracts": "สัญญา",
+    "activities": "กิจกรรม",
+    "visit_activities": "กิจกรรมการเข้าเยี่ยม",
+    "visit_customer": "การเยี่ยมลูกค้า",
+    "admin": "ผู้ดูแลระบบ",
+    "user_management": "จัดการผู้ใช้งาน",
+    "settings": "ตั้งค่า",
+    "todo_list": "To do list",
+    "visits": "การเข้าเยี่ยม",
+    "approvals": "อนุมัติ",
+    "my_customers": "ลูกค้าของฉัน"
+  },
+  "tasks": {
+    "all_tasks_title": "งานทั้งหมด",
+    "all_tasks_subtitle": "จัดการงานประจำวันและการติดตามงานของคุณ",
+    "create_task": "สร้างงาน",
+    "todo": "สิ่งที่ต้องทำ",
+    "in_progress": "กำลังดำเนินการ",
+    "completed": "เสร็จสิ้น",
+    "overdue": "เกินกำหนด",
+    "all_tasks": "งานทั้งหมด",
+    "filters": {
+      "search": "ค้นหา",
+      "owner": "ผู้รับผิดชอบ",
+      "all_owners": "ทั้งหมด",
+      "activity_type": "ประเภทกิจกรรม",
+      "all_activities": "กิจกรรมทั้งหมด",
+      "from": "จากวันที่",
+      "to": "ถึงวันที่",
+      "clear": "ล้างตัวกรอง"
+    },
+    "sort": {
+      "sort_by_date": "เรียงตามวันที่",
+      "date_old_new": "วันที่: เก่าสุดก่อน",
+      "date_new_old": "วันที่: ใหม่สุดก่อน"
+    },
+    "activity_types": {
+      "customer_visit": "เยี่ยมลูกค้า",
+      "meeting": "การประชุม",
+      "follow_up": "ติดตามงาน",
+      "site_survey": "สำรวจหน้างาน",
+      "other": "อื่นๆ"
+    },
+    "task_updated": "อัปเดตงานเรียบร้อยแล้ว",
+    "status_updated": "อัปเดตสถานะเรียบร้อยแล้ว",
+    "task_deleted": "ลบงานเรียบร้อยแล้ว",
+    "delete_task_title": "ลบงาน",
+    "delete_task_description": "คุณแน่ใจหรือไม่ว่าต้องการลบงานนี้? การกระทำนี้ไม่สามารถย้อนกลับได้"
+  },
+  "placeholders": {
+    "search_tasks": "ค้นหางาน..."
+  },
+  "common": {
+    "update": "อัปเดต",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "save": "บันทึก",
+    "search": "ค้นหา",
+    "filter": "ตัวกรอง",
+    "clear": "ล้าง",
+    "export": "ส่งออก",
+    "create": "สร้าง",
+    "edit": "แก้ไข",
+    "view": "ดู",
+    "close": "ปิด",
+    "confirm": "ยืนยัน",
+    "loading": "กำลังโหลด...",
+    "noData": "ไม่มีข้อมูล",
+    "viewAll": "ดูทั้งหมด",
+    "showing": "แสดง",
+    "of": "จาก",
+    "items": "รายการ",
+    "this_week": "สัปดาห์นี้",
+    "all_types": "ทุกประเภท",
+    "visits": "การเข้าเยี่ยม",
+    "meetings": "การประชุม",
+    "calls": "การโทร",
+    "date": "วันที่",
+    "time": "เวลา",
+    "activity": "กิจกรรม",
+    "type": "ประเภท",
+    "status": "สถานะ",
+    "assigned_to": "ผู้รับผิดชอบ",
+    "customer": "ลูกค้า",
+    "date_time": "วันและเวลา",
+    "duration": "ระยะเวลา",
+    "outcome": "ผลลัพธ์",
+    "actions": "การกระทำ",
+    "logout_title": "ยืนยันการออกจากระบบ",
+    "logout_desc": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?",
+    "all": "ทั้งหมด",
+    "pending": "รอดำเนินการ",
+    "approved": "อนุมัติ",
+    "rejected": "ปฏิเสธ",
+    "urgent": "ด่วน",
+    "medium": "ปานกลาง",
+    "low": "ต่ำ",
+    "value": "มูลค่า",
+    "sender": "ผู้ส่ง",
+    "waitingAt": "รออนุมัติที่",
+    "daysAgo": "วันที่ผ่านมา",
+    "days": "วัน"
+  },
+  "activities": {
+    "title": "กิจกรรมและการเข้าเยี่ยม",
+    "subtitle": "จัดการการเข้าเยี่ยมลูกค้า การประชุม และการโต้ตอบ",
+    "new_activity": "สร้างกิจกรรมใหม่",
+    "timeline": "ไทม์ไลน์กิจกรรม",
+    "all_activities": "กิจกรรมทั้งหมด",
+    "types": {
+      "visit": "เข้าพบลูกค้า",
+      "call": "โทรหาลูกค้า",
+      "meeting": "ประชุม",
+      "email": "อีเมล",
+      "presentation": "นำเสนองาน",
+      "customer_visit": "เยี่ยมลูกค้า",
+      "sales_meeting": "ประชุมการขาย",
+      "site_survey": "สำรวจหน้างาน",
+      "internal_meeting": "ประชุมภายใน",
+      "follow_up_call": "โทรติดตามผล",
+      "task_reminder": "เตือนความจำ"
+    },
+    "status": {
+      "planned": "วางแผนแล้ว",
+      "confirmed": "ยืนยันแล้ว",
+      "in_progress": "กำลังดำเนินการ",
+      "completed": "เสร็จสิ้น",
+      "cancelled": "ยกเลิก",
+      "postponed": "เลื่อน"
+    },
+    "outcome": {
+      "deal_closed": "ปิดการขายได้",
+      "quotation_requested": "ขอใบเสนอราคา",
+      "follow_up_scheduled": "นัดติดตามผล",
+      "information_provided": "ให้ข้อมูลแล้ว",
+      "no_interest": "ไม่สนใจ"
+    }
+  },
+  "calendar": {
+    "title": "ปฏิทิน",
+    "subtitle": "จัดตารางและจัดการกิจกรรมของคุณ",
+    "total_activities": "กิจกรรมทั้งหมด",
+    "today": "วันนี้",
+    "no_activities_day": "ไม่มีกิจกรรมในวันนี้",
+    "views": {
+      "month": "เดือน",
+      "week": "สัปดาห์",
+      "day": "วัน",
+      "list": "รายการ"
+    }
+  },
+  "customers": {
+    "activity_types": {
+      "planned": "วางแผนแล้ว",
+      "completed": "เสร็จสิ้น"
+    }
+  },
+  "approval": {
+    "title": "เอกสารอนุมัติทั้งหมด",
+    "subtitle": "จัดการและติดตามการอนุมัติเอกสาร",
+    "approve": "อนุมัติ",
+    "reject": "ปฏิเสธ",
+    "approved": "อนุมัติแล้ว",
+    "rejected": "ปฏิเสธแล้ว",
+    "pending": "รอดำเนินการ"
+  },
+  "permissions": {
+    "no_permission": "คุณไม่มีสิทธิ์ในการดำเนินการนี้"
+  }
+}
