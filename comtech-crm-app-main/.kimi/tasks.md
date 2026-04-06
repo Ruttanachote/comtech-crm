@@ -61,6 +61,21 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: replace UModal with native modal)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `33af315` - "fix: replace UModal with native modal using Teleport"
+- **Problem**: UModal, UCard, UButton, UAvatar, UBadge from @nuxt/ui not working
+- **Solution**: Use native HTML/CSS with Vue Teleport
+- **Changes**:
+  - Replace UModal with native modal (Teleport + div)
+  - Replace UCard with native card styling
+  - Replace UButton with native button
+  - Replace UAvatar with native img
+  - Replace UBadge with native span styling
+  - Add getActivityBadgeClass helper
+- **Files changed**: `app/pages/approvals/index.vue`
+
 ### 2025-04-06 (Fix: use native button instead of UButton)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
