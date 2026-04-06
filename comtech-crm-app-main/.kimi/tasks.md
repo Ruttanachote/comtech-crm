@@ -61,6 +61,17 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: add Activity History button - match Figma)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `5750135` - "fix: add Activity History button to match Figma design"
+- **Figma Design**: 2 buttons in header - Activity History (clock icon) + Export
+- **Changes**:
+  - Add Activity History button (clock icon, square style)
+  - Add History Modal showing recent approvals
+  - Keep Export button with download icon
+- **Files changed**: `app/pages/approvals/index.vue`
+
 ### 2025-04-06 (Fix: match Figma design - remove Activity History)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
