@@ -61,6 +61,14 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: use native button instead of UButton)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `5a7e902` - "fix: use native button instead of UButton"
+- **Problem**: UButton not working properly
+- **Solution**: Use native HTML button with Tailwind styling
+- **Files changed**: `app/pages/approvals/index.vue`
+
 ### 2025-04-06 (Fix: History Modal UI - match Figma exactly)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
