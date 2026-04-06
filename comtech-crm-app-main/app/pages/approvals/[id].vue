@@ -51,7 +51,7 @@ watch(() => approvalId.value, async (newId) => {
 
 // Methods
 function handleBack() {
-  router.push('/approve')
+  router.push('/approvals')
 }
 
 function handleDownload() {

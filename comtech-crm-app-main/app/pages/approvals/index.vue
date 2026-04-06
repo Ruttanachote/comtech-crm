@@ -162,7 +162,7 @@ function handleStatFilter(status: string) {
 }
 
 function handleView(id: string) {
-  router.push(`/approve/${id}`)
+  router.push(`/approvals/${id}`)
 }
 
 function handleApprove(id: string) {
