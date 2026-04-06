@@ -24,7 +24,6 @@ interface RouteParams {
 
 definePageMeta({
   layout: 'default',
-  middleware: ['auth'],
 })
 
 const { t } = useI18n()

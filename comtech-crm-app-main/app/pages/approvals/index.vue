@@ -131,7 +131,6 @@ import ApprovalList from '~/components/approval/ApprovalList.vue'
 
 definePageMeta({
   layout: 'default',
-  middleware: ['auth'],
 })
 
 const { t } = useI18n()
