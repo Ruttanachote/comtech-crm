@@ -167,7 +167,15 @@
 
 <script setup lang="ts">
 import type { ApprovalFilters, ApprovalStatus, ApprovalType, ApprovalPriority } from '~/types/approval.type'
-import debounce from 'lodash/debounce'
+
+// Simple debounce function (replaces lodash)
+function debounce<T extends (...args: any[]) => any>(fn: T, delay: number): (...args: Parameters<T>) => void {
+  let timeoutId: ReturnType<typeof setTimeout> | null = null
+  return function (...args: Parameters<T>) {
+    if (timeoutId) clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn(...args), delay)
+  }
+}
 
 interface Props {
   filters: ApprovalFilters
