@@ -7,25 +7,15 @@
         <p class="text-sm text-gray-500 mt-1">{{ t('approval.subtitle') }}</p>
       </div>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-2">
-        <UButton
-          color="gray"
-          variant="soft"
-          @click="showHistory = true"
-        >
-          <UIcon name="i-heroicons-clock" class="w-4 h-4 mr-2" />
-          {{ t('approval.detail.activity') }}
-        </UButton>
-        <UButton
-          color="gray"
-          variant="soft"
-          @click="handleExport"
-        >
-          <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 mr-2" />
-          {{ t('approval.detail.download') }}
-        </UButton>
-      </div>
+      <!-- Export Button -->
+      <UButton
+        color="gray"
+        variant="soft"
+        @click="handleExport"
+      >
+        <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 mr-2" />
+        {{ t('common.export') }}
+      </UButton>
     </div>
 
     <!-- Stats -->
@@ -143,56 +133,6 @@
       </UCard>
     </UModal>
 
-    <!-- History Modal -->
-    <UModal v-model="showHistory" :ui="{ width: 'lg' }">
-      <UCard>
-        <template #header>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <UIcon name="i-heroicons-clock" class="w-6 h-6 text-blue-500" />
-              <h3 class="text-lg font-semibold">{{ t('approval.detail.activity') }}</h3>
-            </div>
-            <UButton
-              color="gray"
-              variant="ghost"
-              size="sm"
-              @click="showHistory = false"
-            >
-              <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
-            </UButton>
-          </div>
-        </template>
-
-        <div class="max-h-96 overflow-y-auto">
-          <div v-if="store.allItems.length > 0" class="space-y-4">
-            <div
-              v-for="item in store.allItems.slice(0, 10)"
-              :key="item.id"
-              class="p-3 bg-gray-50 rounded-lg"
-            >
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-medium text-gray-900">{{ item.documentNumber }}</span>
-                <UBadge
-                  :color="item.status === 'approved' ? 'emerald' : item.status === 'rejected' ? 'red' : 'amber'"
-                  variant="soft"
-                  size="xs"
-                >
-                  {{ t(`approval.status.${item.status}`) }}
-                </UBadge>
-              </div>
-              <p class="text-sm text-gray-600 line-clamp-1">{{ item.title }}</p>
-              <p class="text-xs text-gray-400 mt-1">
-                {{ item.sender.name }} • {{ item.daysWaiting }} {{ t('approval.list.daysWaiting') }}
-              </p>
-            </div>
-          </div>
-          <div v-else class="text-center py-8">
-            <UIcon name="i-heroicons-inbox" class="w-12 h-12 text-gray-300 mx-auto mb-3" />
-            <p class="text-gray-500">{{ t('approval.empty.title') }}</p>
-          </div>
-        </div>
-      </UCard>
-    </UModal>
   </div>
 </template>
 
@@ -214,7 +154,6 @@ const toast = useToast()
 // State
 const showApproveModal = ref(false)
 const showRejectModal = ref(false)
-const showHistory = ref(false)
 const selectedApprovalId = ref<string | null>(null)
 const actionComment = ref('')
 
