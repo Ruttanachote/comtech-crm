@@ -61,6 +61,17 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: match Figma design - remove Activity History)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `cc68840` - "fix: match Figma design - remove Activity History button from list page"
+- **Problem**: Added Activity History button that doesn't exist in Figma
+- **Solution**: 
+  - Remove Activity History button from list page header
+  - Keep only Export button (matches Figma exactly)
+  - Remove unused History Modal
+- **Files changed**: `app/pages/approvals/index.vue`
+
 ### 2025-04-06 (Fix: approvals index page header)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
