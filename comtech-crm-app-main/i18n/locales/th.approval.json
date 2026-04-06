@@ -85,11 +85,18 @@
       "preview": "ดูตัวอย่าง"
     },
     "activity": {
-      "submitted": "ส่งเอกสาร",
-      "approved": "อนุมัติเอกสาร",
-      "rejected": "ปฏิเสธเอกสาร",
+      "submitted": "ส่ง",
+      "approved": "อนุมัติ",
+      "rejected": "ปฏิเสธ",
+      "forwarded": "ส่งต่อ",
       "requestedMoreInfo": "ขอข้อมูลเพิ่มเติม",
       "commented": "แสดงความคิดเห็น"
+    },
+    "history": {
+      "title": "กิจกรรมดีล",
+      "subtitle": "ประวัติการเปลี่ยนแปลงและกิจกรรมทั้งหมด",
+      "items": "รายการ",
+      "noDescription": "ไม่มีคำอธิบาย"
     },
     "steps": {
       "submitted": "ส่งแล้ว",

@@ -85,11 +85,18 @@
       "preview": "Preview"
     },
     "activity": {
-      "submitted": "submitted the document",
-      "approved": "approved the document",
-      "rejected": "rejected the document",
+      "submitted": "submitted",
+      "approved": "approved",
+      "rejected": "rejected",
+      "forwarded": "forwarded",
       "requestedMoreInfo": "requested more information",
       "commented": "added a comment"
+    },
+    "history": {
+      "title": "Deal Activity",
+      "subtitle": "All changes and activity history",
+      "items": "items",
+      "noDescription": "No description"
     },
     "steps": {
       "submitted": "Submitted",

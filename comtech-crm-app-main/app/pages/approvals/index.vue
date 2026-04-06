@@ -148,9 +148,9 @@
       <UCard>
         <template #header>
           <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <UIcon name="i-heroicons-clock" class="w-6 h-6 text-blue-500" />
-              <h3 class="text-lg font-semibold">{{ t('approval.detail.activity') }}</h3>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">{{ t('approval.history.title') }}</h3>
+              <p class="text-sm text-gray-500">{{ t('approval.history.subtitle') }}</p>
             </div>
             <UButton
               color="gray"
@@ -163,32 +163,45 @@
           </div>
         </template>
 
-        <div class="max-h-96 overflow-y-auto">
-          <div v-if="store.allItems.length > 0" class="space-y-4">
-            <div
-              v-for="item in store.allItems.slice(0, 10)"
-              :key="item.id"
-              class="p-3 bg-gray-50 rounded-lg"
-            >
-              <div class="flex items-center justify-between mb-1">
-                <span class="font-medium text-gray-900">{{ item.documentNumber }}</span>
+        <!-- Activity Count -->
+        <div class="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100">
+          <span class="text-sm font-medium text-gray-900">{{ t('approval.history.title') }}</span>
+          <UBadge color="primary" variant="soft" size="sm">{{ recentActivities.length }}</UBadge>
+          <span class="text-sm text-gray-500">{{ t('approval.history.items') }}</span>
+        </div>
+
+        <!-- Activity List -->
+        <div class="max-h-96 overflow-y-auto space-y-4">
+          <div
+            v-for="activity in recentActivities"
+            :key="activity.id"
+            class="flex gap-3"
+          >
+            <!-- Avatar -->
+            <UAvatar
+              :src="activity.user.avatar"
+              :alt="activity.user.name"
+              size="sm"
+            />
+
+            <!-- Content -->
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-0.5">
+                <span class="text-xs text-gray-400">{{ formatDateTime(activity.timestamp) }}</span>
+              </div>
+              <div class="flex items-center gap-2 mb-1">
                 <UBadge
-                  :color="item.status === 'approved' ? 'emerald' : item.status === 'rejected' ? 'red' : 'amber'"
+                  :color="getActivityColor(activity.action)"
                   variant="soft"
                   size="xs"
                 >
-                  {{ t(`approval.status.${item.status}`) }}
+                  {{ t(`approval.activity.${activity.action}`) }}
                 </UBadge>
+                <span class="text-sm font-medium text-gray-900">Approval Request</span>
               </div>
-              <p class="text-sm text-gray-600 line-clamp-1">{{ item.title }}</p>
-              <p class="text-xs text-gray-400 mt-1">
-                {{ item.sender.name }} • {{ item.daysWaiting }} {{ t('approval.list.daysWaiting') }}
-              </p>
+              <p class="text-sm text-gray-600">{{ activity.comment || t('approval.history.noDescription') }}</p>
+              <p class="text-xs text-gray-500 mt-1">{{ activity.user.name }}</p>
             </div>
-          </div>
-          <div v-else class="text-center py-8">
-            <UIcon name="i-heroicons-inbox" class="w-12 h-12 text-gray-300 mx-auto mb-3" />
-            <p class="text-gray-500">{{ t('approval.empty.title') }}</p>
           </div>
         </div>
       </UCard>
@@ -207,7 +220,7 @@ definePageMeta({
   layout: 'default',
 })
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const router = useRouter()
 const store = useApprovalStore()
 const toast = useToast()
@@ -218,6 +231,71 @@ const showRejectModal = ref(false)
 const showHistory = ref(false)
 const selectedApprovalId = ref<string | null>(null)
 const actionComment = ref('')
+
+// Mock activities for history modal (from approval.mock.ts)
+const recentActivities = computed(() => [
+  {
+    id: 'act-1',
+    action: 'forwarded',
+    user: { name: 'System', avatar: 'https://i.pravatar.cc/150?u=system' },
+    timestamp: '2024-12-16T14:25:00Z',
+    comment: 'Forwarded to Finance Review stage',
+  },
+  {
+    id: 'act-2',
+    action: 'approved',
+    user: { name: 'Michael Park', avatar: 'https://i.pravatar.cc/150?u=michael' },
+    timestamp: '2024-12-16T14:20:00Z',
+    comment: 'Approved by Sales Manager - Stage 1 completed',
+  },
+  {
+    id: 'act-3',
+    action: 'submitted',
+    user: { name: 'Sarah Chen', avatar: 'https://i.pravatar.cc/150?u=sarah' },
+    timestamp: '2024-12-15T10:30:00Z',
+    comment: 'Submitted contract approval for International Freight Agreement',
+  },
+  {
+    id: 'act-4',
+    action: 'submitted',
+    user: { name: 'Michael Park', avatar: 'https://i.pravatar.cc/150?u=michael' },
+    timestamp: '2024-12-10T09:15:00Z',
+    comment: 'Submitted quotation approval for Warehousing Services',
+  },
+  {
+    id: 'act-5',
+    action: 'approved',
+    user: { name: 'Finance Manager', avatar: 'https://i.pravatar.cc/150?u=finance' },
+    timestamp: '2024-12-06T16:45:00Z',
+    comment: 'Approved Sea Freight Contract - Finance Review completed',
+  },
+])
+
+// Helper functions
+function formatDateTime(date: string): string {
+  return new Date(date).toLocaleString(locale.value === 'th' ? 'th-TH' : 'en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+
+function getActivityColor(action: string): string {
+  switch (action) {
+    case 'approved':
+      return 'emerald'
+    case 'rejected':
+      return 'red'
+    case 'forwarded':
+      return 'blue'
+    case 'submitted':
+      return 'amber'
+    default:
+      return 'gray'
+  }
+}
 
 // Fetch data on mount
 onMounted(async () => {
