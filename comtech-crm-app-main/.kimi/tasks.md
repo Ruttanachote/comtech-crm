@@ -61,6 +61,16 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: approvals index page header)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `b5f30be` - "fix: add header action buttons to approvals index page"
+- **Changes**:
+  - Added Activity History button with modal to header (top right)
+  - Added Download/Export button to header (top right)
+  - Updated layout to match Figma design (title left, actions right)
+- **Files changed**: `app/pages/approvals/index.vue`
+
 ### 2025-04-06 (Fix: Approval Detail UI and i18n)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
