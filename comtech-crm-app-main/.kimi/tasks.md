@@ -61,6 +61,22 @@
 
 ## Task History
 
+### 2025-04-06 (Fix: Approval Detail UI and i18n)
+- **Status**: 🟢 Fixed & Pushed
+- **Branch**: `approve`
+- **Commit**: `b355354` - "fix: update Approval Detail UI and i18n"
+- **Issues Fixed**:
+  - Added Activity History button to header (top right)
+  - Added missing i18n keys for activity actions
+  - Added missing i18n keys for confirmation messages
+  - Added notFound section to i18n
+  - Fixed scroll to activity section functionality
+- **Files changed**:
+  - `app/components/approval/ApprovalDetail.vue`
+  - `app/components/approval/ApprovalComments.vue`
+  - `i18n/locales/en.approval.json`
+  - `i18n/locales/th.approval.json`
+
 ### 2025-04-06 (Fix: syntax error in nuxt.config.ts)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
