@@ -152,6 +152,7 @@ export default defineNuxtConfig({
     locales: [
       { code: 'en', name: 'English', files: ['en.json', 'en.dashboard.json', 'en.approval.json'] },
       { code: 'th', name: 'Thai', files: ['th.json', 'th.dashboard.json', 'th.approval.json'] },
+    ],
     strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,
