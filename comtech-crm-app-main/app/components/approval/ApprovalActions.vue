@@ -42,7 +42,7 @@
             <span class="text-xs text-gray-400">({{ formatFileSize(file.size) }})</span>
           </div>
           <UButton
-            color="red"
+            color="error"
             variant="ghost"
             size="xs"
             @click="removeAttachment(index)"
@@ -54,7 +54,7 @@
 
       <!-- Add File Button -->
       <UButton
-        color="gray"
+        color="neutral"
         variant="soft"
         size="sm"
         @click="openFilePicker"
@@ -75,7 +75,7 @@
     <!-- Action Buttons -->
     <div class="flex flex-wrap items-center gap-3">
       <UButton
-        color="emerald"
+        color="success"
         variant="solid"
         size="lg"
         :loading="loading === 'approve'"
@@ -88,7 +88,7 @@
       </UButton>
 
       <UButton
-        color="red"
+        color="error"
         variant="soft"
         size="lg"
         :loading="loading === 'reject'"
@@ -101,7 +101,7 @@
       </UButton>
 
       <UButton
-        color="amber"
+        color="warning"
         variant="soft"
         size="lg"
         :loading="loading === 'requestMoreInfo'"
@@ -115,44 +115,37 @@
     </div>
 
     <!-- Confirmation Modal -->
-    <UModal v-model="showConfirmModal">
-      <UCard>
-        <template #header>
-          <div class="flex items-center gap-2">
+    <Teleport to="body">
+      <div v-if="showConfirmModal" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/50" @click="showConfirmModal = false" />
+        <div class="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6">
+          <div class="flex items-center gap-2 mb-4">
             <UIcon
               :name="confirmAction === 'approve' ? 'i-heroicons-check-circle' : 'i-heroicons-exclamation-triangle'"
-              :class="confirmAction === 'approve' ? 'text-emerald-500' : 'text-red-500'"
+              :class="confirmAction === 'approve' ? 'text-green-500' : 'text-red-500'"
               class="w-6 h-6"
             />
-            <h3 class="text-lg font-semibold">
-              {{ confirmTitle }}
-            </h3>
+            <h3 class="text-lg font-semibold">{{ confirmTitle }}</h3>
           </div>
-        </template>
-
-        <p class="text-gray-600">
-          {{ confirmMessage }}
-        </p>
-
-        <template #footer>
+          <p class="text-gray-600 mb-6">{{ confirmMessage }}</p>
           <div class="flex justify-end gap-3">
-            <UButton
-              color="gray"
-              variant="soft"
+            <button
+              class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 transition-colors"
               @click="showConfirmModal = false"
             >
               {{ t('common.cancel') }}
-            </UButton>
-            <UButton
-              :color="confirmAction === 'approve' ? 'emerald' : 'red'"
+            </button>
+            <button
+              class="px-4 py-2 text-white rounded-lg transition-colors"
+              :class="confirmAction === 'approve' ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'"
               @click="executeAction"
             >
               {{ t('common.confirm') }}
-            </UButton>
+            </button>
           </div>
-        </template>
-      </UCard>
-    </UModal>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
         <div>
           <!-- Back Button -->
           <UButton
-            color="gray"
+            color="neutral"
             variant="ghost"
             size="sm"
             class="mb-4 -ml-2"
@@ -37,7 +37,7 @@
         <!-- Action Buttons -->
         <div class="flex items-center gap-2">
           <UButton
-            color="gray"
+            color="neutral"
             variant="soft"
             @click="scrollToActivity"
           >
@@ -45,7 +45,7 @@
             {{ t('approval.detail.activity') }}
           </UButton>
           <UButton
-            color="gray"
+            color="neutral"
             variant="soft"
             @click="$emit('download')"
           >

@@ -66,9 +66,9 @@ export const useApprovalStore = defineStore('approval', {
       type: 'all',
       priority: 'all',
       search: '',
-      sortBy: 'newest',
+      sortBy: 'date_new_old',
     },
-    
+
     // Stats
     stats: null,
     statsLoading: false,
@@ -239,7 +239,7 @@ export const useApprovalStore = defineStore('approval', {
         type: 'all',
         priority: 'all',
         search: '',
-        sortBy: 'newest',
+        sortBy: 'date_new_old',
       }
       this.page = 1
     },

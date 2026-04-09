@@ -45,7 +45,7 @@
       </div>
       <div class="flex items-center gap-2">
         <UButton
-          color="gray"
+          color="neutral"
           variant="soft"
           size="sm"
           :disabled="page === 1"
@@ -59,7 +59,7 @@
         </span>
         
         <UButton
-          color="gray"
+          color="neutral"
           variant="soft"
           size="sm"
           :disabled="page >= totalPages"
@@ -70,13 +70,15 @@
       </div>
 
       <!-- Page Size Selector -->
-      <USelect
+      <select
         v-model="localPageSize"
-        :options="pageSizeOptions"
-        size="sm"
-        class="w-32"
-        @update:model-value="$emit('pageSizeChange', $event)"
-      />
+        class="h-8 px-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 cursor-pointer"
+        @change="$emit('pageSizeChange', localPageSize)"
+      >
+        <option v-for="opt in pageSizeOptions" :key="opt.value" :value="opt.value">
+          {{ opt.label }}
+        </option>
+      </select>
     </div>
   </div>
 </template>

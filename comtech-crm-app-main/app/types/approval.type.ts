@@ -197,7 +197,7 @@ export interface ApprovalFilters {
     start: string
     end: string
   }
-  sortBy?: 'newest' | 'oldest' | 'priority' | 'value'
+  sortBy?: 'date_new_old' | 'date_old_new' | 'priority' | 'value'
 }
 
 // ============================================

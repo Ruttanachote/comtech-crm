@@ -139,6 +139,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     nuxtApp.provide('keycloak', keycloak);
   } catch (error) {
     console.error('Keycloak initialization failed', error);
-    throw error;
+    if (import.meta.client) {
+      window.location.href = '/auth/login';
+    }
   }
 });

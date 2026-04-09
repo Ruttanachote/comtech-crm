@@ -10,7 +10,7 @@
           <span class="text-sm font-semibold text-gray-900">{{ approval.documentNumber }}</span>
           <UBadge
             v-if="isUrgent"
-            color="red"
+            color="error"
             variant="soft"
             size="sm"
             class="font-medium"
@@ -20,7 +20,7 @@
           </UBadge>
           <UBadge
             v-else-if="approval.priority === 'medium'"
-            color="amber"
+            color="warning"
             variant="soft"
             size="sm"
             class="font-medium"
@@ -67,7 +67,7 @@
       <!-- Actions -->
       <div class="flex items-center justify-end gap-2 pt-3 border-t border-gray-100">
         <UButton
-          color="gray"
+          color="neutral"
           variant="soft"
           size="sm"
           @click="$emit('reject', approval.id)"
@@ -75,7 +75,7 @@
           {{ t('approval.list.actions.reject') }}
         </UButton>
         <UButton
-          color="emerald"
+          color="success"
           variant="solid"
           size="sm"
           @click="$emit('approve', approval.id)"
@@ -83,7 +83,7 @@
           {{ t('approval.list.actions.approve') }}
         </UButton>
         <UButton
-          color="gray"
+          color="neutral"
           variant="ghost"
           size="sm"
           square

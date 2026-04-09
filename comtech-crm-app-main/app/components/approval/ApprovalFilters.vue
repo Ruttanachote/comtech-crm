@@ -15,105 +15,55 @@
       <!-- Filter Buttons -->
       <div class="flex flex-wrap items-center gap-2">
         <!-- Status Filter -->
-        <UDropdown
-          :items="statusOptions"
-          :popper="{ placement: 'bottom-start' }"
-        >
-          <UButton
-            color="gray"
-            variant="soft"
-            size="md"
-            trailing-icon="i-heroicons-chevron-down"
-          >
+        <UDropdownMenu :items="statusOptions" :content="{ align: 'start' }">
+          <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.status') }}
             <span v-if="filters.status && filters.status !== 'all'" class="ml-1 text-primary-600">
               ({{ getStatusLabel(filters.status) }})
             </span>
           </UButton>
-        </UDropdown>
+        </UDropdownMenu>
 
         <!-- Type Filter -->
-        <UDropdown
-          :items="typeOptions"
-          :popper="{ placement: 'bottom-start' }"
-        >
-          <UButton
-            color="gray"
-            variant="soft"
-            size="md"
-            trailing-icon="i-heroicons-chevron-down"
-          >
+        <UDropdownMenu :items="typeOptions" :content="{ align: 'start' }">
+          <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.type') }}
             <span v-if="filters.type && filters.type !== 'all'" class="ml-1 text-primary-600">
               ({{ getTypeLabel(filters.type) }})
             </span>
           </UButton>
-        </UDropdown>
+        </UDropdownMenu>
 
         <!-- Priority Filter -->
-        <UDropdown
-          :items="priorityOptions"
-          :popper="{ placement: 'bottom-start' }"
-        >
-          <UButton
-            color="gray"
-            variant="soft"
-            size="md"
-            trailing-icon="i-heroicons-chevron-down"
-          >
+        <UDropdownMenu key="priority-dropdown" :items="priorityOptions" :content="{ align: 'start' }">
+          <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.priority') }}
             <span v-if="filters.priority && filters.priority !== 'all'" class="ml-1 text-primary-600">
               ({{ getPriorityLabel(filters.priority) }})
             </span>
           </UButton>
-        </UDropdown>
+        </UDropdownMenu>
 
         <!-- Sort By -->
-        <UDropdown
-          :items="sortOptions"
-          :popper="{ placement: 'bottom-start' }"
-        >
-          <UButton
-            color="gray"
-            variant="soft"
-            size="md"
-            trailing-icon="i-heroicons-chevron-down"
-          >
+        <UDropdownMenu :items="sortOptions" :content="{ align: 'start' }">
+          <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.sortBy') }}
           </UButton>
-        </UDropdown>
+        </UDropdownMenu>
 
         <!-- Clear Filters -->
-        <UButton
-          v-if="hasActiveFilters"
-          color="red"
-          variant="soft"
-          size="md"
-          @click="clearFilters"
-        >
+        <UButton v-if="hasActiveFilters" color="error" variant="soft" size="md" @click="clearFilters">
           <UIcon name="i-heroicons-x-mark" class="w-4 h-4 mr-1" />
           {{ t('common.clear') }}
         </UButton>
       </div>
 
-      <!-- Export Button -->
-      <div class="lg:ml-auto">
-        <UButton
-          color="gray"
-          variant="soft"
-          size="md"
-          @click="$emit('export')"
-        >
-          <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 mr-2" />
-          {{ t('common.export') }}
-        </UButton>
-      </div>
     </div>
 
     <!-- Active Filters Tags -->
     <div v-if="hasActiveFilters" class="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-gray-100">
       <span class="text-sm text-gray-500">{{ t('common.activeFilters') }}:</span>
-      
+
       <UBadge
         v-if="filters.status && filters.status !== 'all'"
         color="primary"
@@ -166,9 +116,8 @@
 </template>
 
 <script setup lang="ts">
-import type { ApprovalFilters, ApprovalStatus, ApprovalType, ApprovalPriority } from '~/types/approval.type'
+import type { ApprovalFilters } from '~/types/approval.type'
 
-// Simple debounce function (replaces lodash)
 function debounce<T extends (...args: any[]) => any>(fn: T, delay: number): (...args: Parameters<T>) => void {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
   return function (...args: Parameters<T>) {
@@ -191,116 +140,43 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-// Local state for search
 const localSearch = ref(props.filters.search || '')
 
-// Watch for external filter changes
 watch(() => props.filters.search, (newVal) => {
   localSearch.value = newVal || ''
 })
 
-// Debounced search
 const debouncedSearch = debounce((value: string) => {
   updateFilter('search', value)
 }, 300)
 
-// Status options
 const statusOptions = computed(() => [
-  [{
-    label: t('approval.status.pending'),
-    click: () => updateFilter('status', 'pending'),
-  }],
-  [{
-    label: t('approval.status.approved'),
-    click: () => updateFilter('status', 'approved'),
-  }],
-  [{
-    label: t('approval.status.rejected'),
-    click: () => updateFilter('status', 'rejected'),
-  }],
-  [{
-    label: t('common.all'),
-    click: () => updateFilter('status', 'all'),
-  }],
+  { label: t('approval.status.pending'), onSelect: () => updateFilter('status', 'pending') },
+  { label: t('approval.status.approved'), onSelect: () => updateFilter('status', 'approved') },
+  { label: t('approval.status.rejected'), onSelect: () => updateFilter('status', 'rejected') },
+  { label: t('common.all'), onSelect: () => updateFilter('status', 'all') },
 ])
 
-// Type options
 const typeOptions = computed(() => [
-  [{
-    label: t('approval.type.contract'),
-    click: () => updateFilter('type', 'contract'),
-  }],
-  [{
-    label: t('approval.type.quotation'),
-    click: () => updateFilter('type', 'quotation'),
-  }],
-  [{
-    label: t('approval.type.invoice'),
-    click: () => updateFilter('type', 'invoice'),
-  }],
-  [{
-    label: t('approval.type.purchase_order'),
-    click: () => updateFilter('type', 'purchase_order'),
-  }],
-  [{
-    label: t('approval.type.expense'),
-    click: () => updateFilter('type', 'expense'),
-  }],
-  [{
-    label: t('approval.type.discount'),
-    click: () => updateFilter('type', 'discount'),
-  }],
-  [{
-    label: t('common.all'),
-    click: () => updateFilter('type', 'all'),
-  }],
+  { label: t('approval.type.contract'), onSelect: () => updateFilter('type', 'contract') },
+  { label: t('approval.type.quotation'), onSelect: () => updateFilter('type', 'quotation') },
+  { label: t('common.all'), onSelect: () => updateFilter('type', 'all') },
 ])
 
-// Priority options
 const priorityOptions = computed(() => [
-  [{
-    label: t('approval.priority.urgent'),
-    click: () => updateFilter('priority', 'urgent'),
-  }],
-  [{
-    label: t('approval.priority.high'),
-    click: () => updateFilter('priority', 'high'),
-  }],
-  [{
-    label: t('approval.priority.medium'),
-    click: () => updateFilter('priority', 'medium'),
-  }],
-  [{
-    label: t('approval.priority.low'),
-    click: () => updateFilter('priority', 'low'),
-  }],
-  [{
-    label: t('common.all'),
-    click: () => updateFilter('priority', 'all'),
-  }],
+  { label: t('approval.priority.high'), onSelect: () => updateFilter('priority', 'high') },
+  { label: t('approval.priority.medium'), onSelect: () => updateFilter('priority', 'medium') },
+  { label: t('approval.priority.low'), onSelect: () => updateFilter('priority', 'low') },
+  { label: t('common.all'), onSelect: () => updateFilter('priority', 'all') },
 ])
 
-// Sort options
 const sortOptions = computed(() => [
-  [{
-    label: t('common.newest'),
-    click: () => updateFilter('sortBy', 'newest'),
-  }],
-  [{
-    label: t('common.oldest'),
-    click: () => updateFilter('sortBy', 'oldest'),
-  }],
-  [{
-    label: t('common.priority'),
-    click: () => updateFilter('sortBy', 'priority'),
-  }],
-  [{
-    label: t('common.value'),
-    click: () => updateFilter('sortBy', 'value'),
-  }],
+  { label: t('common.date_new_old'), onSelect: () => updateFilter('sortBy', 'date_new_old') },
+  { label: t('common.date_old_new'), onSelect: () => updateFilter('sortBy', 'date_old_new') },
+  { label: t('common.value'), onSelect: () => updateFilter('sortBy', 'value') },
+  { label: t('common.priority'), onSelect: () => updateFilter('sortBy', 'priority') },
 ])
 
-// Computed
 const hasActiveFilters = computed(() => {
   return (
     (props.filters.status && props.filters.status !== 'all') ||
@@ -310,7 +186,6 @@ const hasActiveFilters = computed(() => {
   )
 })
 
-// Methods
 function updateFilter(key: keyof ApprovalFilters, value: string) {
   emit('update:filters', { ...props.filters, [key]: value })
 }

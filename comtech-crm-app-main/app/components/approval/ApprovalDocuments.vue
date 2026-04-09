@@ -29,7 +29,7 @@
         <!-- Actions -->
         <div class="flex items-center gap-2">
           <UButton
-            color="gray"
+            color="neutral"
             variant="ghost"
             size="sm"
             @click="previewDocument(doc)"
@@ -37,7 +37,7 @@
             <UIcon name="i-heroicons-eye" class="w-4 h-4" />
           </UButton>
           <UButton
-            color="gray"
+            color="neutral"
             variant="ghost"
             size="sm"
             @click="downloadDocument(doc)"

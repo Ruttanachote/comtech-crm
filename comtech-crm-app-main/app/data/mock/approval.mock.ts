@@ -148,7 +148,7 @@ export const mockApprovalItems: ApprovalItem[] = [
     title: 'International Freight Agreement - Global Freight Solutions',
     description: 'Master service agreement for international freight services',
     type: 'contract',
-    priority: 'urgent',
+    priority: 'high',
     status: 'pending',
     customer: {
       id: 'cust-001',
@@ -169,14 +169,14 @@ export const mockApprovalItems: ApprovalItem[] = [
     submittedAt: '2024-12-10T08:00:00Z',
     updatedAt: '2024-12-10T08:00:00Z',
     daysWaiting: 3,
-    tags: ['freight', 'international', 'urgent'],
+    tags: ['freight', 'international'],
   },
   {
     id: 'apr-002',
     documentNumber: 'APR-2024-1198',
-    title: 'Warehousing Services - Pacific Trade Corp',
-    description: 'Warehousing and storage services agreement',
-    type: 'contract',
+    title: 'Warehousing Services Quotation - Pacific Trade Corp',
+    description: 'Quotation for warehousing and storage services',
+    type: 'quotation',
     priority: 'medium',
     status: 'pending',
     customer: {
@@ -232,10 +232,10 @@ export const mockApprovalItems: ApprovalItem[] = [
   {
     id: 'apr-004',
     documentNumber: 'APR-2024-1165',
-    title: 'Expedited Shipping - North American Traders',
-    description: 'Expedited shipping services agreement',
-    type: 'contract',
-    priority: 'urgent',
+    title: 'Expedited Shipping Quotation - North American Traders',
+    description: 'Quotation for expedited shipping services',
+    type: 'quotation',
+    priority: 'high',
     status: 'pending',
     customer: {
       id: 'cust-004',
@@ -256,7 +256,7 @@ export const mockApprovalItems: ApprovalItem[] = [
     submittedAt: '2024-11-12T09:00:00Z',
     updatedAt: '2024-11-12T09:00:00Z',
     daysWaiting: 28,
-    tags: ['expedited', 'shipping', 'urgent'],
+    tags: ['expedited', 'shipping'],
   },
   {
     id: 'apr-005',
@@ -264,7 +264,7 @@ export const mockApprovalItems: ApprovalItem[] = [
     title: 'Cold Chain Logistics - Fresh Foods Inc',
     description: 'Cold chain logistics and temperature-controlled transport',
     type: 'contract',
-    priority: 'urgent',
+    priority: 'low',
     status: 'pending',
     customer: {
       id: 'cust-005',
@@ -326,6 +326,8 @@ export function getMockApprovalById(id: string): ApprovalDetail | undefined {
   return mockApprovalDetails.find(approval => approval.id === id)
 }
 
+const priorityOrder: Record<string, number> = { high: 0, medium: 1, low: 2 }
+
 export function getMockApprovalList(
   page: number = 1,
   pageSize: number = 10,
@@ -334,6 +336,7 @@ export function getMockApprovalList(
     type?: string
     priority?: string
     search?: string
+    sortBy?: string
   }
 ): {
   items: ApprovalItem[]
@@ -366,6 +369,23 @@ export function getMockApprovalList(
         item.customer.name.toLowerCase().includes(searchLower)
     )
   }
+
+  // Apply sort
+  const sortBy = filters?.sortBy || 'date_new_old'
+  filtered.sort((a, b) => {
+    switch (sortBy) {
+      case 'date_new_old':
+        return new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
+      case 'date_old_new':
+        return new Date(a.submittedAt).getTime() - new Date(b.submittedAt).getTime()
+      case 'value':
+        return b.value - a.value
+      case 'priority':
+        return (priorityOrder[a.priority] ?? 99) - (priorityOrder[b.priority] ?? 99)
+      default:
+        return new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
+    }
+  })
 
   // Pagination
   const start = (page - 1) * pageSize
