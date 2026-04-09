@@ -19,7 +19,7 @@
       <UButton
         v-if="hasFilters"
         color="primary"
-        variant="soft"
+        variant="subtle"
         @click="$emit('clearFilters')"
       >
         {{ t('approval.empty.button') }}
@@ -46,7 +46,7 @@
       <div class="flex items-center gap-2">
         <UButton
           color="neutral"
-          variant="soft"
+          variant="subtle"
           size="sm"
           icon="i-lucide-chevron-left"
           :disabled="page === 1"
@@ -59,7 +59,7 @@
         
         <UButton
           color="neutral"
-          variant="soft"
+          variant="subtle"
           size="sm"
           icon="i-lucide-chevron-right"
           :disabled="page >= totalPages"
@@ -67,10 +67,10 @@
         />
       </div>
 
-      <!-- Page Size Selector -->
+      <!-- Page Size Selector - v3 uses :items not :options -->
       <USelect
         v-model="localPageSize"
-        :items="pageSizeOptions"
+        :items="pageSizeItems"
         size="sm"
         class="w-32"
         @update:model-value="$emit('pageSizeChange', $event)"
@@ -124,7 +124,8 @@ const paginationText = computed(() => {
   return `${start}-${end} ${t('common.of')} ${props.total}`
 })
 
-const pageSizeOptions = computed(() => [
+// v3 uses :items with { label, value } format
+const pageSizeItems = computed(() => [
   { label: `5 / ${t('common.page')}`, value: 5 },
   { label: `10 / ${t('common.page')}`, value: 10 },
   { label: `20 / ${t('common.page')}`, value: 20 },

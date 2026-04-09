@@ -52,7 +52,7 @@
           <UButton
             v-if="isUrgent"
             color="warning"
-            variant="soft"
+            variant="subtle"
             size="sm"
             icon="i-lucide-alert-triangle"
           >
@@ -63,7 +63,7 @@
           <UButton
             v-else-if="approval.priority === 'medium'"
             color="warning"
-            variant="soft"
+            variant="subtle"
             size="sm"
             icon="i-lucide-clock"
           >

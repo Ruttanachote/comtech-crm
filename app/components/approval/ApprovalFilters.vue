@@ -80,8 +80,8 @@
       <div class="flex flex-wrap gap-2">
         <UBadge
           v-if="localFilters.status !== 'all'"
-          color="emerald"
-          variant="soft"
+          color="success"
+          variant="subtle"
           class="cursor-pointer"
           @click="clearFilter('status')"
         >
@@ -90,8 +90,8 @@
         </UBadge>
         <UBadge
           v-if="localFilters.type !== 'all'"
-          color="emerald"
-          variant="soft"
+          color="success"
+          variant="subtle"
           class="cursor-pointer"
           @click="clearFilter('type')"
         >
@@ -100,8 +100,8 @@
         </UBadge>
         <UBadge
           v-if="localFilters.priority !== 'all'"
-          color="emerald"
-          variant="soft"
+          color="success"
+          variant="subtle"
           class="cursor-pointer"
           @click="clearFilter('priority')"
         >
@@ -153,36 +153,36 @@ watch(() => props.filters, (newFilters) => {
   localFilters.sort = newFilters.sort || 'newest'
 }, { deep: true })
 
-// Dropdown items with click handlers
+// Dropdown items with onClick handlers (v3 uses onClick not click)
 const statusItems = computed(() => [
-  { label: t('approval.filters.status.all'), onSelect: () => selectFilter('status', 'all') },
-  { label: t('approval.filters.status.pending'), onSelect: () => selectFilter('status', 'pending') },
-  { label: t('approval.filters.status.approved'), onSelect: () => selectFilter('status', 'approved') },
-  { label: t('approval.filters.status.rejected'), onSelect: () => selectFilter('status', 'rejected') }
+  { label: t('approval.filters.status.all'), onClick: () => selectFilter('status', 'all') },
+  { label: t('approval.filters.status.pending'), onClick: () => selectFilter('status', 'pending') },
+  { label: t('approval.filters.status.approved'), onClick: () => selectFilter('status', 'approved') },
+  { label: t('approval.filters.status.rejected'), onClick: () => selectFilter('status', 'rejected') }
 ])
 
 const typeItems = computed(() => [
-  { label: t('approval.filters.type.all'), onSelect: () => selectFilter('type', 'all') },
-  { label: t('approval.filters.type.quotation'), onSelect: () => selectFilter('type', 'quotation') },
-  { label: t('approval.filters.type.invoice'), onSelect: () => selectFilter('type', 'invoice') },
-  { label: t('approval.filters.type.purchase'), onSelect: () => selectFilter('type', 'purchase') },
-  { label: t('approval.filters.type.expense'), onSelect: () => selectFilter('type', 'expense') }
+  { label: t('approval.filters.type.all'), onClick: () => selectFilter('type', 'all') },
+  { label: t('approval.filters.type.quotation'), onClick: () => selectFilter('type', 'quotation') },
+  { label: t('approval.filters.type.invoice'), onClick: () => selectFilter('type', 'invoice') },
+  { label: t('approval.filters.type.purchase'), onClick: () => selectFilter('type', 'purchase') },
+  { label: t('approval.filters.type.expense'), onClick: () => selectFilter('type', 'expense') }
 ])
 
 const priorityItems = computed(() => [
-  { label: t('approval.filters.priority.all'), onSelect: () => selectFilter('priority', 'all') },
-  { label: t('approval.filters.priority.urgent'), onSelect: () => selectFilter('priority', 'urgent') },
-  { label: t('approval.filters.priority.high'), onSelect: () => selectFilter('priority', 'high') },
-  { label: t('approval.filters.priority.medium'), onSelect: () => selectFilter('priority', 'medium') },
-  { label: t('approval.filters.priority.low'), onSelect: () => selectFilter('priority', 'low') }
+  { label: t('approval.filters.priority.all'), onClick: () => selectFilter('priority', 'all') },
+  { label: t('approval.filters.priority.urgent'), onClick: () => selectFilter('priority', 'urgent') },
+  { label: t('approval.filters.priority.high'), onClick: () => selectFilter('priority', 'high') },
+  { label: t('approval.filters.priority.medium'), onClick: () => selectFilter('priority', 'medium') },
+  { label: t('approval.filters.priority.low'), onClick: () => selectFilter('priority', 'low') }
 ])
 
 const sortItems = computed(() => [
-  { label: t('approval.filters.sort.newest'), onSelect: () => selectFilter('sort', 'newest') },
-  { label: t('approval.filters.sort.oldest'), onSelect: () => selectFilter('sort', 'oldest') },
-  { label: t('approval.filters.sort.valueHigh'), onSelect: () => selectFilter('sort', 'value_high') },
-  { label: t('approval.filters.sort.valueLow'), onSelect: () => selectFilter('sort', 'value_low') },
-  { label: t('approval.filters.sort.priority'), onSelect: () => selectFilter('sort', 'priority') }
+  { label: t('approval.filters.sort.newest'), onClick: () => selectFilter('sort', 'newest') },
+  { label: t('approval.filters.sort.oldest'), onClick: () => selectFilter('sort', 'oldest') },
+  { label: t('approval.filters.sort.valueHigh'), onClick: () => selectFilter('sort', 'value_high') },
+  { label: t('approval.filters.sort.valueLow'), onClick: () => selectFilter('sort', 'value_low') },
+  { label: t('approval.filters.sort.priority'), onClick: () => selectFilter('sort', 'priority') }
 ])
 
 // Labels

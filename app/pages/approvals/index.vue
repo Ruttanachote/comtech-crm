@@ -11,13 +11,13 @@
       <div class="flex items-center gap-2">
         <UButton
           color="neutral"
-          variant="soft"
+          variant="subtle"
           icon="i-lucide-history"
           @click="showHistory = true"
         />
         <UButton
           color="neutral"
-          variant="soft"
+          variant="subtle"
           icon="i-lucide-download"
           @click="handleExport"
         >
@@ -59,7 +59,7 @@
       />
     </div>
 
-    <!-- Approve Modal -->
+    <!-- Approve Modal - v3 uses v-model:open -->
     <UModal v-model:open="showApproveModal">
       <template #content>
         <div class="p-6">
@@ -77,7 +77,7 @@
           <div class="flex justify-end gap-3">
             <UButton
               color="neutral"
-              variant="soft"
+              variant="subtle"
               @click="showApproveModal = false"
             >
               {{ t('common.cancel') }}
@@ -94,7 +94,7 @@
       </template>
     </UModal>
 
-    <!-- Reject Modal -->
+    <!-- Reject Modal - v3 uses v-model:open -->
     <UModal v-model:open="showRejectModal">
       <template #content>
         <div class="p-6">
@@ -112,7 +112,7 @@
           <div class="flex justify-end gap-3">
             <UButton
               color="neutral"
-              variant="soft"
+              variant="subtle"
               @click="showRejectModal = false"
             >
               {{ t('common.cancel') }}
@@ -129,7 +129,7 @@
       </template>
     </UModal>
 
-    <!-- History Modal -->
+    <!-- History Modal - v3 uses v-model:open -->
     <UModal v-model:open="showHistory">
       <template #content>
         <div class="max-h-[80vh] flex flex-col">
@@ -150,7 +150,7 @@
           <!-- Activity Count -->
           <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-100">
             <span class="text-sm font-medium text-gray-900">{{ t('approval.history.title') }}</span>
-            <UBadge color="blue" size="sm">{{ recentActivities.length }}</UBadge>
+            <UBadge color="info" size="sm">{{ recentActivities.length }}</UBadge>
             <span class="text-sm text-gray-500">{{ t('approval.history.items') }}</span>
           </div>
 
