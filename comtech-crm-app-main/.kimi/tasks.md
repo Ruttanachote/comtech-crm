@@ -6,6 +6,11 @@
 - [x] Create and push new branch "layout"
 - [x] Create and push new branch "approve" with full approval system
 - [x] Fix: rename approve to approvals (folder and routes)
+- [x] **CRITICAL: Fix root folder structure**
+  - Removed: `.current_page.txt`, `.store`, `.todo.jsonl`
+  - Removed: `deploy/`, `output/` folders
+  - Kept only: `comtech-crm/` (correct structure)
+  - **RULE: Never create extra folders at root level**
 
 ### 🔴 Pending
 - [ ] Review all existing components
