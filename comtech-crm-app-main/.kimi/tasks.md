@@ -6,11 +6,6 @@
 - [x] Create and push new branch "layout"
 - [x] Create and push new branch "approve" with full approval system
 - [x] Fix: rename approve to approvals (folder and routes)
-- [x] **CRITICAL: Fix root folder structure**
-  - Removed: `.current_page.txt`, `.store`, `.todo.jsonl`
-  - Removed: `deploy/`, `output/` folders
-  - Kept only: `comtech-crm/` (correct structure)
-  - **RULE: Never create extra folders at root level**
 
 ### 🔴 Pending
 - [ ] Review all existing components
@@ -66,27 +61,14 @@
 
 ## Task History
 
-### 2025-04-06 (Fix: replace UModal with native modal)
+### 2025-04-06 (Fix: button styling for better visibility)
 - **Status**: 🟢 Fixed & Pushed
 - **Branch**: `approve`
-- **Commit**: `33af315` - "fix: replace UModal with native modal using Teleport"
-- **Problem**: UModal, UCard, UButton, UAvatar, UBadge from @nuxt/ui not working
-- **Solution**: Use native HTML/CSS with Vue Teleport
-- **Changes**:
-  - Replace UModal with native modal (Teleport + div)
-  - Replace UCard with native card styling
-  - Replace UButton with native button
-  - Replace UAvatar with native img
-  - Replace UBadge with native span styling
-  - Add getActivityBadgeClass helper
-- **Files changed**: `app/pages/approvals/index.vue`
-
-### 2025-04-06 (Fix: use native button instead of UButton)
-- **Status**: 🟢 Fixed & Pushed
-- **Branch**: `approve`
-- **Commit**: `5a7e902` - "fix: use native button instead of UButton"
-- **Problem**: UButton not working properly
-- **Solution**: Use native HTML button with Tailwind styling
+- **Commit**: `4f16d02` - "fix: improve button styling for clock and export buttons"
+- **Problem**: Buttons didn't look clickable
+- **Solution**: 
+  - Change variant from soft to solid
+  - Add size md and padding
 - **Files changed**: `app/pages/approvals/index.vue`
 
 ### 2025-04-06 (Fix: History Modal UI - match Figma exactly)
