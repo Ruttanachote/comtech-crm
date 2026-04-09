@@ -9,25 +9,19 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-2">
-        <UButton
-          color="gray"
-          variant="solid"
-          size="md"
-          class="px-3 py-2"
+        <button
+          class="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center justify-center transition-colors cursor-pointer"
           @click="showHistory = true"
         >
-          <UIcon name="i-heroicons-clock" class="w-5 h-5" />
-        </UButton>
-        <UButton
-          color="gray"
-          variant="solid"
-          size="md"
-          class="px-3 py-2"
+          <UIcon name="i-heroicons-clock" class="w-5 h-5 text-gray-600" />
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg flex items-center gap-2 transition-colors cursor-pointer"
           @click="handleExport"
         >
-          <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 mr-2" />
-          {{ t('common.export') }}
-        </UButton>
+          <UIcon name="i-heroicons-arrow-down-tray" class="w-4 h-4 text-gray-600" />
+          <span class="text-sm text-gray-700">{{ t('common.export') }}</span>
+        </button>
       </div>
     </div>
 
@@ -63,152 +57,146 @@
     />
 
     <!-- Approve Modal -->
-    <UModal v-model="showApproveModal">
-      <UCard>
-        <template #header>
-          <div class="flex items-center gap-2">
+    <Teleport to="body">
+      <div v-if="showApproveModal" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/50" @click="showApproveModal = false" />
+        <div class="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6">
+          <div class="flex items-center gap-2 mb-4">
             <UIcon name="i-heroicons-check-circle" class="w-6 h-6 text-emerald-500" />
             <h3 class="text-lg font-semibold">{{ t('approval.messages.confirmApprove') }}</h3>
           </div>
-        </template>
-
-        <p class="text-gray-600 mb-4">
-          {{ t('approval.messages.confirmApproveMessage') }}
-        </p>
-
-        <UTextarea
-          v-model="actionComment"
-          :placeholder="t('approval.detail.actions.commentPlaceholder')"
-          rows="3"
-          class="mb-4"
-        />
-
-        <template #footer>
+          <p class="text-gray-600 mb-4">{{ t('approval.messages.confirmApproveMessage') }}</p>
+          <textarea
+            v-model="actionComment"
+            :placeholder="t('approval.detail.actions.commentPlaceholder')"
+            rows="3"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <div class="flex justify-end gap-3">
-            <UButton
-              color="gray"
-              variant="soft"
+            <button
+              class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 transition-colors"
               @click="showApproveModal = false"
             >
               {{ t('common.cancel') }}
-            </UButton>
-            <UButton
-              color="emerald"
-              :loading="store.isActionLoading"
+            </button>
+            <button
+              class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-colors"
+              :disabled="store.isActionLoading"
               @click="confirmApprove"
             >
               {{ t('approval.list.actions.approve') }}
-            </UButton>
+            </button>
           </div>
-        </template>
-      </UCard>
-    </UModal>
+        </div>
+      </div>
+    </Teleport>
 
     <!-- Reject Modal -->
-    <UModal v-model="showRejectModal">
-      <UCard>
-        <template #header>
-          <div class="flex items-center gap-2">
+    <Teleport to="body">
+      <div v-if="showRejectModal" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/50" @click="showRejectModal = false" />
+        <div class="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6">
+          <div class="flex items-center gap-2 mb-4">
             <UIcon name="i-heroicons-x-circle" class="w-6 h-6 text-red-500" />
             <h3 class="text-lg font-semibold">{{ t('approval.messages.confirmReject') }}</h3>
           </div>
-        </template>
-
-        <p class="text-gray-600 mb-4">
-          {{ t('approval.messages.confirmRejectMessage') }}
-        </p>
-
-        <UTextarea
-          v-model="actionComment"
-          :placeholder="t('approval.detail.actions.commentPlaceholder')"
-          rows="3"
-          class="mb-4"
-        />
-
-        <template #footer>
+          <p class="text-gray-600 mb-4">{{ t('approval.messages.confirmRejectMessage') }}</p>
+          <textarea
+            v-model="actionComment"
+            :placeholder="t('approval.detail.actions.commentPlaceholder')"
+            rows="3"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <div class="flex justify-end gap-3">
-            <UButton
-              color="gray"
-              variant="soft"
+            <button
+              class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-gray-700 transition-colors"
               @click="showRejectModal = false"
             >
               {{ t('common.cancel') }}
-            </UButton>
-            <UButton
-              color="red"
-              :loading="store.isActionLoading"
+            </button>
+            <button
+              class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
+              :disabled="store.isActionLoading"
               @click="confirmReject"
             >
               {{ t('approval.list.actions.reject') }}
-            </UButton>
+            </button>
           </div>
-        </template>
-      </UCard>
-    </UModal>
+        </div>
+      </div>
+    </Teleport>
 
-    <!-- History Modal -->
-    <UModal v-model="showHistory" :ui="{ width: 'lg' }">
-      <UCard>
-        <template #header>
-          <div class="flex items-center justify-between">
+    <!-- History Modal (Native) -->
+    <Teleport to="body">
+      <div
+        v-if="showHistory"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+      >
+        <!-- Backdrop -->
+        <div
+          class="absolute inset-0 bg-black/50"
+          @click="showHistory = false"
+        />
+
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 max-h-[80vh] flex flex-col">
+          <!-- Header -->
+          <div class="flex items-center justify-between p-4 border-b border-gray-100">
             <div>
               <h3 class="text-lg font-semibold text-gray-900">{{ t('approval.history.title') }}</h3>
               <p class="text-sm text-gray-500">{{ t('approval.history.subtitle') }}</p>
             </div>
-            <UButton
-              color="gray"
-              variant="ghost"
-              size="sm"
+            <button
+              class="p-1 hover:bg-gray-100 rounded-lg transition-colors"
               @click="showHistory = false"
             >
-              <UIcon name="i-heroicons-x-mark" class="w-5 h-5" />
-            </UButton>
+              <UIcon name="i-heroicons-x-mark" class="w-5 h-5 text-gray-500" />
+            </button>
           </div>
-        </template>
 
-        <!-- Activity Count -->
-        <div class="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100">
-          <span class="text-sm font-medium text-gray-900">{{ t('approval.history.title') }}</span>
-          <UBadge color="primary" variant="soft" size="sm">{{ recentActivities.length }}</UBadge>
-          <span class="text-sm text-gray-500">{{ t('approval.history.items') }}</span>
-        </div>
+          <!-- Activity Count -->
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-100">
+            <span class="text-sm font-medium text-gray-900">{{ t('approval.history.title') }}</span>
+            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">{{ recentActivities.length }}</span>
+            <span class="text-sm text-gray-500">{{ t('approval.history.items') }}</span>
+          </div>
 
-        <!-- Activity List -->
-        <div class="max-h-96 overflow-y-auto space-y-4">
-          <div
-            v-for="activity in recentActivities"
-            :key="activity.id"
-            class="flex gap-3"
-          >
-            <!-- Avatar -->
-            <UAvatar
-              :src="activity.user.avatar"
-              :alt="activity.user.name"
-              size="sm"
-            />
+          <!-- Activity List -->
+          <div class="overflow-y-auto p-4 space-y-4 max-h-96">
+            <div
+              v-for="activity in recentActivities"
+              :key="activity.id"
+              class="flex gap-3"
+            >
+              <!-- Avatar -->
+              <img
+                :src="activity.user.avatar"
+                :alt="activity.user.name"
+                class="w-8 h-8 rounded-full object-cover flex-shrink-0"
+              />
 
-            <!-- Content -->
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-0.5">
-                <span class="text-xs text-gray-400">{{ formatDateTime(activity.timestamp) }}</span>
+              <!-- Content -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="text-xs text-gray-400">{{ formatDateTime(activity.timestamp) }}</span>
+                </div>
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                  <span
+                    class="px-2 py-0.5 text-xs font-medium rounded-full"
+                    :class="getActivityBadgeClass(activity.action)"
+                  >
+                    {{ t(`approval.activity.${activity.action}`) }}
+                  </span>
+                  <span class="text-sm font-medium text-gray-900">Approval Request</span>
+                </div>
+                <p class="text-sm text-gray-600">{{ activity.comment || t('approval.history.noDescription') }}</p>
+                <p class="text-xs text-gray-500 mt-1">{{ activity.user.name }}</p>
               </div>
-              <div class="flex items-center gap-2 mb-1">
-                <UBadge
-                  :color="getActivityColor(activity.action)"
-                  variant="soft"
-                  size="xs"
-                >
-                  {{ t(`approval.activity.${activity.action}`) }}
-                </UBadge>
-                <span class="text-sm font-medium text-gray-900">Approval Request</span>
-              </div>
-              <p class="text-sm text-gray-600">{{ activity.comment || t('approval.history.noDescription') }}</p>
-              <p class="text-xs text-gray-500 mt-1">{{ activity.user.name }}</p>
             </div>
           </div>
         </div>
-      </UCard>
-    </UModal>
+      </div>
+    </Teleport>
 
   </div>
 </template>
@@ -235,7 +223,7 @@ const showHistory = ref(false)
 const selectedApprovalId = ref<string | null>(null)
 const actionComment = ref('')
 
-// Mock activities for history modal (from approval.mock.ts)
+// Mock activities for history modal
 const recentActivities = computed(() => [
   {
     id: 'act-1',
@@ -273,32 +261,6 @@ const recentActivities = computed(() => [
     comment: 'Approved Sea Freight Contract - Finance Review completed',
   },
 ])
-
-// Helper functions
-function formatDateTime(date: string): string {
-  return new Date(date).toLocaleString(locale.value === 'th' ? 'th-TH' : 'en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
-
-function getActivityColor(action: string): string {
-  switch (action) {
-    case 'approved':
-      return 'emerald'
-    case 'rejected':
-      return 'red'
-    case 'forwarded':
-      return 'blue'
-    case 'submitted':
-      return 'amber'
-    default:
-      return 'gray'
-  }
-}
 
 // Fetch data on mount
 onMounted(async () => {
@@ -379,11 +341,35 @@ async function confirmReject() {
 }
 
 function handleExport() {
-  // TODO: Implement export functionality
   toast.add({
     title: t('common.info'),
     description: t('common.comingSoon'),
     color: 'blue',
   })
+}
+
+function formatDateTime(date: string): string {
+  return new Date(date).toLocaleString(locale.value === 'th' ? 'th-TH' : 'en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+
+function getActivityBadgeClass(action: string): string {
+  switch (action) {
+    case 'approved':
+      return 'bg-emerald-100 text-emerald-700'
+    case 'rejected':
+      return 'bg-red-100 text-red-700'
+    case 'forwarded':
+      return 'bg-blue-100 text-blue-700'
+    case 'submitted':
+      return 'bg-amber-100 text-amber-700'
+    default:
+      return 'bg-gray-100 text-gray-700'
+  }
 }
 </script>
