@@ -18,9 +18,10 @@
       </div>
 
       <!-- Status Dropdown -->
-      <div ref="statusDropdownRef" class="relative">
+      <div class="relative dropdown-container">
         <button
-          @click.stop="toggleDropdown('status')"
+          @click="toggleDropdown('status')"
+          type="button"
           class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
           :class="{ 'border-emerald-500 ring-2 ring-emerald-100': localFilters.status !== 'all' }"
         >
@@ -39,14 +40,15 @@
           </svg>
         </button>
         <div 
-          v-show="openDropdown === 'status'" 
-          class="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
-          style="z-index: 100;"
+          v-if="openDropdown === 'status'" 
+          class="dropdown-menu absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
+          style="z-index: 9999;"
         >
           <button
             v-for="option in statusOptions"
             :key="option.value"
-            @click.stop="selectFilter('status', option.value)"
+            type="button"
+            @click="selectFilter('status', option.value)"
             class="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
             :class="localFilters.status === option.value ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700'"
           >
@@ -60,9 +62,10 @@
       </div>
 
       <!-- Type Dropdown -->
-      <div ref="typeDropdownRef" class="relative">
+      <div class="relative dropdown-container">
         <button
-          @click.stop="toggleDropdown('type')"
+          @click="toggleDropdown('type')"
+          type="button"
           class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
           :class="{ 'border-emerald-500 ring-2 ring-emerald-100': localFilters.type !== 'all' }"
         >
@@ -81,14 +84,15 @@
           </svg>
         </button>
         <div 
-          v-show="openDropdown === 'type'" 
-          class="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
-          style="z-index: 100;"
+          v-if="openDropdown === 'type'" 
+          class="dropdown-menu absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
+          style="z-index: 9999;"
         >
           <button
             v-for="option in typeOptions"
             :key="option.value"
-            @click.stop="selectFilter('type', option.value)"
+            type="button"
+            @click="selectFilter('type', option.value)"
             class="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
             :class="localFilters.type === option.value ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700'"
           >
@@ -102,9 +106,10 @@
       </div>
 
       <!-- Priority Dropdown -->
-      <div ref="priorityDropdownRef" class="relative">
+      <div class="relative dropdown-container">
         <button
-          @click.stop="toggleDropdown('priority')"
+          @click="toggleDropdown('priority')"
+          type="button"
           class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
           :class="{ 'border-emerald-500 ring-2 ring-emerald-100': localFilters.priority !== 'all' }"
         >
@@ -123,14 +128,15 @@
           </svg>
         </button>
         <div 
-          v-show="openDropdown === 'priority'" 
-          class="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
-          style="z-index: 100;"
+          v-if="openDropdown === 'priority'" 
+          class="dropdown-menu absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
+          style="z-index: 9999;"
         >
           <button
             v-for="option in priorityOptions"
             :key="option.value"
-            @click.stop="selectFilter('priority', option.value)"
+            type="button"
+            @click="selectFilter('priority', option.value)"
             class="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
             :class="localFilters.priority === option.value ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700'"
           >
@@ -144,9 +150,10 @@
       </div>
 
       <!-- Sort Dropdown -->
-      <div ref="sortDropdownRef" class="relative">
+      <div class="relative dropdown-container">
         <button
-          @click.stop="toggleDropdown('sort')"
+          @click="toggleDropdown('sort')"
+          type="button"
           class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
         >
           <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,14 +171,15 @@
           </svg>
         </button>
         <div 
-          v-show="openDropdown === 'sort'" 
-          class="absolute top-full right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
-          style="z-index: 100;"
+          v-if="openDropdown === 'sort'" 
+          class="dropdown-menu absolute top-full right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1"
+          style="z-index: 9999;"
         >
           <button
             v-for="option in sortOptions"
             :key="option.value"
-            @click.stop="selectFilter('sort', option.value)"
+            type="button"
+            @click="selectFilter('sort', option.value)"
             class="w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
             :class="localFilters.sort === option.value ? 'text-emerald-600 bg-emerald-50' : 'text-gray-700'"
           >
@@ -247,12 +255,6 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-// Dropdown refs
-const statusDropdownRef = ref<HTMLElement | null>(null)
-const typeDropdownRef = ref<HTMLElement | null>(null)
-const priorityDropdownRef = ref<HTMLElement | null>(null)
-const sortDropdownRef = ref<HTMLElement | null>(null)
-
 // Local state for filters
 const localFilters = reactive<ApprovalFilters>({
   search: props.filters.search || '',
@@ -274,29 +276,26 @@ watch(() => props.filters, (newFilters) => {
   localFilters.sort = newFilters.sort || 'newest'
 }, { deep: true })
 
-// Click outside to close dropdown
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
-
-function handleClickOutside(event: MouseEvent) {
+// Click outside handler - using mousedown to catch before click
+const handleClickOutside = (event: MouseEvent) => {
   const target = event.target as HTMLElement
   
-  // Check if click is inside any dropdown
-  const isInsideStatus = statusDropdownRef.value?.contains(target)
-  const isInsideType = typeDropdownRef.value?.contains(target)
-  const isInsidePriority = priorityDropdownRef.value?.contains(target)
-  const isInsideSort = sortDropdownRef.value?.contains(target)
+  // Find closest dropdown container
+  const dropdownContainer = target.closest('.dropdown-container')
   
-  // If click is outside all dropdowns, close the open one
-  if (!isInsideStatus && !isInsideType && !isInsidePriority && !isInsideSort) {
+  // If click is outside all dropdown containers, close
+  if (!dropdownContainer) {
     openDropdown.value = null
   }
 }
+
+onMounted(() => {
+  document.addEventListener('mousedown', handleClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('mousedown', handleClickOutside)
+})
 
 // Options
 const statusOptions = computed(() => [
