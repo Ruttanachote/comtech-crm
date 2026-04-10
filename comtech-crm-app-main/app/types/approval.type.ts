@@ -63,7 +63,7 @@ export interface ApprovalDocument {
 // ============================================
 export interface ApprovalActivity {
   id: string
-  action: 'submitted' | 'approved' | 'rejected' | 'request_more_info' | 'commented'
+  action: 'submitted' | 'approved' | 'rejected' | 'request_more_info' | 'commented' | 'forwarded'
   user: {
     id: string
     name: string
@@ -86,6 +86,7 @@ export interface WorkflowStep {
   status: 'completed' | 'current' | 'pending'
   completedAt?: string
   completedBy?: string
+  assignedTo?: string
 }
 
 // ============================================

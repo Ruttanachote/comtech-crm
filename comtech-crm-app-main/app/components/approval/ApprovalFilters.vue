@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-4 mb-6">
+  <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-4 mb-6">
     <div class="flex flex-col lg:flex-row lg:items-center gap-4">
       <!-- Search -->
-      <div class="flex-1 min-w-[200px]">
+      <div class="flex-1 min-w-0">
         <UInput
           v-model="localSearch"
           :placeholder="t('approval.filters.search')"
@@ -18,7 +18,7 @@
         <UDropdownMenu :items="statusOptions" :content="{ align: 'start' }">
           <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.status') }}
-            <span v-if="filters.status && filters.status !== 'all'" class="ml-1 text-primary-600">
+            <span v-if="filters.status && filters.status !== 'all'" class="ml-1 text-primary-600 dark:text-primary-400">
               ({{ getStatusLabel(filters.status) }})
             </span>
           </UButton>
@@ -28,7 +28,7 @@
         <UDropdownMenu :items="typeOptions" :content="{ align: 'start' }">
           <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.type') }}
-            <span v-if="filters.type && filters.type !== 'all'" class="ml-1 text-primary-600">
+            <span v-if="filters.type && filters.type !== 'all'" class="ml-1 text-primary-600 dark:text-primary-400">
               ({{ getTypeLabel(filters.type) }})
             </span>
           </UButton>
@@ -38,7 +38,7 @@
         <UDropdownMenu key="priority-dropdown" :items="priorityOptions" :content="{ align: 'start' }">
           <UButton color="neutral" variant="soft" size="md" trailing-icon="i-heroicons-chevron-down">
             {{ t('approval.filters.priority') }}
-            <span v-if="filters.priority && filters.priority !== 'all'" class="ml-1 text-primary-600">
+            <span v-if="filters.priority && filters.priority !== 'all'" class="ml-1 text-primary-600 dark:text-primary-400">
               ({{ getPriorityLabel(filters.priority) }})
             </span>
           </UButton>
@@ -54,15 +54,14 @@
         <!-- Clear Filters -->
         <UButton v-if="hasActiveFilters" color="error" variant="soft" size="md" @click="clearFilters">
           <UIcon name="i-heroicons-x-mark" class="w-4 h-4 mr-1" />
-          {{ t('common.clear') }}
+          {{ t('approval.actions.clear') }}
         </UButton>
       </div>
-
     </div>
 
     <!-- Active Filters Tags -->
-    <div v-if="hasActiveFilters" class="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-gray-100">
-      <span class="text-sm text-gray-500">{{ t('common.activeFilters') }}:</span>
+    <div v-if="hasActiveFilters" class="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+      <span class="text-sm text-gray-500 dark:text-gray-400">{{ t('approval.actions.activeFilters') }}:</span>
 
       <UBadge
         v-if="filters.status && filters.status !== 'all'"
@@ -108,7 +107,7 @@
         class="cursor-pointer"
         @click="clearSearch"
       >
-        {{ t('common.search') }}: {{ filters.search }}
+        {{ t('approval.actions.search') }}: {{ filters.search }}
         <UIcon name="i-heroicons-x-mark" class="w-3 h-3 ml-1" />
       </UBadge>
     </div>
@@ -154,27 +153,34 @@ const statusOptions = computed(() => [
   { label: t('approval.status.pending'), onSelect: () => updateFilter('status', 'pending') },
   { label: t('approval.status.approved'), onSelect: () => updateFilter('status', 'approved') },
   { label: t('approval.status.rejected'), onSelect: () => updateFilter('status', 'rejected') },
-  { label: t('common.all'), onSelect: () => updateFilter('status', 'all') },
+  { label: t('approval.status.request_more_info'), onSelect: () => updateFilter('status', 'request_more_info') },
+  { label: t('approval.actions.all'), onSelect: () => updateFilter('status', 'all') },
 ])
 
 const typeOptions = computed(() => [
   { label: t('approval.type.contract'), onSelect: () => updateFilter('type', 'contract') },
   { label: t('approval.type.quotation'), onSelect: () => updateFilter('type', 'quotation') },
-  { label: t('common.all'), onSelect: () => updateFilter('type', 'all') },
+  { label: t('approval.type.invoice'), onSelect: () => updateFilter('type', 'invoice') },
+  { label: t('approval.type.purchase_order'), onSelect: () => updateFilter('type', 'purchase_order') },
+  { label: t('approval.type.expense'), onSelect: () => updateFilter('type', 'expense') },
+  { label: t('approval.type.discount'), onSelect: () => updateFilter('type', 'discount') },
+  { label: t('approval.type.other'), onSelect: () => updateFilter('type', 'other') },
+  { label: t('approval.actions.all'), onSelect: () => updateFilter('type', 'all') },
 ])
 
 const priorityOptions = computed(() => [
+  { label: t('approval.priority.urgent'), onSelect: () => updateFilter('priority', 'urgent') },
   { label: t('approval.priority.high'), onSelect: () => updateFilter('priority', 'high') },
   { label: t('approval.priority.medium'), onSelect: () => updateFilter('priority', 'medium') },
   { label: t('approval.priority.low'), onSelect: () => updateFilter('priority', 'low') },
-  { label: t('common.all'), onSelect: () => updateFilter('priority', 'all') },
+  { label: t('approval.actions.all'), onSelect: () => updateFilter('priority', 'all') },
 ])
 
 const sortOptions = computed(() => [
-  { label: t('common.date_new_old'), onSelect: () => updateFilter('sortBy', 'date_new_old') },
-  { label: t('common.date_old_new'), onSelect: () => updateFilter('sortBy', 'date_old_new') },
-  { label: t('common.value'), onSelect: () => updateFilter('sortBy', 'value') },
-  { label: t('common.priority'), onSelect: () => updateFilter('sortBy', 'priority') },
+  { label: t('approval.filters.sort.date_new_old'), onSelect: () => updateFilter('sortBy', 'date_new_old') },
+  { label: t('approval.filters.sort.date_old_new'), onSelect: () => updateFilter('sortBy', 'date_old_new') },
+  { label: t('approval.filters.sort.value'), onSelect: () => updateFilter('sortBy', 'value') },
+  { label: t('approval.filters.sort.priority'), onSelect: () => updateFilter('sortBy', 'priority') },
 ])
 
 const hasActiveFilters = computed(() => {

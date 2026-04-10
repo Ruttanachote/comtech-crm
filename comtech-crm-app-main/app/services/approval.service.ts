@@ -12,9 +12,7 @@ import type {
 } from '~/types/approval.type'
 
 import {
-  mockApprovalItems,
-  mockApprovalDetails,
-  mockApprovalStats,
+  getMockApprovalStats,
   getMockApprovalById,
   getMockApprovalList,
   updateMockApprovalStatus,
@@ -80,7 +78,7 @@ export const approvalService = {
   async getStats(): Promise<ApprovalStats> {
     if (USE_MOCK) {
       await delay(300)
-      return { ...mockApprovalStats }
+      return getMockApprovalStats()
     }
 
     const response = await fetch(`${API_BASE}/stats`)
@@ -303,7 +301,7 @@ export const approvalService = {
           content: comment,
           createdAt: new Date().toISOString(),
         }
-        approval.comments.unshift(newComment)
+        approval.comments = [newComment, ...(approval.comments ?? [])]
         return approval
       }
       return null

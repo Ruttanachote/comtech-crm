@@ -1,25 +1,26 @@
 <template>
-  <div class="space-y-4">
+  <div class="space-y-3">
     <!-- Loading State -->
-    <div v-if="loading" class="space-y-4">
-      <USkeleton v-for="i in 3" :key="i" class="h-40 w-full" />
+    <div v-if="loading" class="space-y-3">
+      <USkeleton v-for="i in 3" :key="i" class="h-20 w-full" />
     </div>
 
     <!-- Empty State -->
     <div v-else-if="items.length === 0" class="text-center py-12">
-      <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-        <UIcon name="i-heroicons-inbox" class="w-12 h-12 text-gray-400" />
+      <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+        <UIcon name="i-heroicons-inbox" class="w-12 h-12 text-gray-400 dark:text-gray-500" />
       </div>
-      <h3 class="text-lg font-medium text-gray-900 mb-2">
+      <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">
         {{ t('approval.empty.title') }}
       </h3>
-      <p class="text-sm text-gray-500 mb-4">
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
         {{ t('approval.empty.description') }}
       </p>
       <UButton
         v-if="hasFilters"
         color="primary"
         variant="soft"
+        class="cursor-pointer"
         @click="$emit('clearFilters')"
       >
         {{ t('approval.empty.button') }}
@@ -27,7 +28,7 @@
     </div>
 
     <!-- List -->
-    <div v-else class="space-y-4">
+    <template v-else>
       <ApprovalCard
         v-for="approval in items"
         :key="approval.id"
@@ -36,50 +37,61 @@
         @reject="$emit('reject', $event)"
         @view="$emit('view', $event)"
       />
-    </div>
 
-    <!-- Pagination -->
-    <div v-if="items.length > 0 && total > pageSize" class="flex items-center justify-between pt-4">
-      <div class="text-sm text-gray-500">
-        {{ paginationText }}
-      </div>
-      <div class="flex items-center gap-2">
-        <UButton
-          color="neutral"
-          variant="soft"
-          size="sm"
-          :disabled="page === 1"
-          @click="$emit('pageChange', page - 1)"
-        >
-          <UIcon name="i-heroicons-chevron-left" class="w-4 h-4" />
-        </UButton>
-        
-        <span class="text-sm text-gray-600">
-          {{ page }} / {{ totalPages }}
-        </span>
-        
-        <UButton
-          color="neutral"
-          variant="soft"
-          size="sm"
-          :disabled="page >= totalPages"
-          @click="$emit('pageChange', page + 1)"
-        >
-          <UIcon name="i-heroicons-chevron-right" class="w-4 h-4" />
-        </UButton>
-      </div>
+      <!-- Pagination -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-3 border-t border-gray-100 dark:border-gray-700 mt-2">
+        <!-- Total info -->
+        <p class="text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left">
+          {{ paginationText }}
+        </p>
 
-      <!-- Page Size Selector -->
-      <select
-        v-model="localPageSize"
-        class="h-8 px-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 cursor-pointer"
-        @change="$emit('pageSizeChange', localPageSize)"
-      >
-        <option v-for="opt in pageSizeOptions" :key="opt.value" :value="opt.value">
-          {{ opt.label }}
-        </option>
-      </select>
-    </div>
+        <!-- Page controls -->
+        <div class="flex items-center justify-center gap-1">
+          <button
+            class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
+            :class="page === 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer'"
+            :disabled="page === 1"
+            @click="page > 1 && $emit('pageChange', page - 1)"
+          >
+            <UIcon name="i-heroicons-chevron-left" class="w-4 h-4" />
+          </button>
+
+          <button
+            v-for="p in pageNumbers"
+            :key="p"
+            class="w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors cursor-pointer"
+            :class="p === page
+              ? 'bg-primary-500 text-white'
+              : 'border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
+            @click="$emit('pageChange', p)"
+          >
+            {{ p }}
+          </button>
+
+          <button
+            class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
+            :class="page >= totalPages ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer'"
+            :disabled="page >= totalPages"
+            @click="page < totalPages && $emit('pageChange', page + 1)"
+          >
+            <UIcon name="i-heroicons-chevron-right" class="w-4 h-4" />
+          </button>
+        </div>
+
+        <!-- Page size -->
+        <div class="flex justify-center sm:justify-end">
+          <USelect
+            v-model="localPageSize"
+            :items="pageSizeOptions"
+            value-key="value"
+            label-key="label"
+            size="sm"
+            class="w-28"
+            @update:model-value="(val) => $emit('pageSizeChange', val)"
+          />
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -111,27 +123,36 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-// Local state
 const localPageSize = ref(props.pageSize)
 
-// Watch for external changes
 watch(() => props.pageSize, (newVal) => {
   localPageSize.value = newVal
 })
 
-// Computed
-const totalPages = computed(() => Math.ceil(props.total / props.pageSize))
+const totalPages = computed(() => Math.max(1, Math.ceil(props.total / props.pageSize)))
+
+const pageNumbers = computed(() => {
+  const total = totalPages.value
+  const current = props.page
+  const delta = 2
+  const pages: number[] = []
+
+  for (let i = Math.max(1, current - delta); i <= Math.min(total, current + delta); i++) {
+    pages.push(i)
+  }
+  return pages
+})
 
 const paginationText = computed(() => {
   const start = (props.page - 1) * props.pageSize + 1
   const end = Math.min(props.page * props.pageSize, props.total)
-  return `${start}-${end} ${t('common.of')} ${props.total}`
+  return `${start}-${end} ${t('approval.actions.of')} ${props.total}`
 })
 
 const pageSizeOptions = computed(() => [
-  { label: '5 / ' + t('common.page'), value: 5 },
-  { label: '10 / ' + t('common.page'), value: 10 },
-  { label: '20 / ' + t('common.page'), value: 20 },
-  { label: '50 / ' + t('common.page'), value: 50 },
+  { label: '5 / ' + t('approval.actions.page'), value: 5 },
+  { label: '10 / ' + t('approval.actions.page'), value: 10 },
+  { label: '20 / ' + t('approval.actions.page'), value: 20 },
+  { label: '50 / ' + t('approval.actions.page'), value: 50 },
 ])
 </script>

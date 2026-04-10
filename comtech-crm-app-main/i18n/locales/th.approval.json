@@ -13,7 +13,13 @@
       "type": "ประเภท",
       "priority": "ความสำคัญ",
       "sortBy": "เรียงลำดับ",
-      "search": "ค้นหาเอกสารอนุมัติ..."
+      "search": "ค้นหาเอกสารอนุมัติ...",
+      "sort": {
+        "date_new_old": "วันที่: ใหม่สุดก่อน",
+        "date_old_new": "วันที่: เก่าสุดก่อน",
+        "value": "มูลค่า",
+        "priority": "ความสำคัญ"
+      }
     },
     "priority": {
       "urgent": "ด่วน",
@@ -42,12 +48,13 @@
       "customer": "ลูกค้า",
       "value": "มูลค่า",
       "sender": "ผู้ส่ง",
-      "currentStep": "รออนุมัติที่",
+      "waitingAt": "รออนุมัติที่",
       "daysWaiting": "วันที่ผ่านมา",
       "actions": {
         "reject": "ปฏิเสธ",
         "approve": "อนุมัติ",
-        "view": "ดูรายละเอียด"
+        "view": "ดูรายละเอียด",
+        "history": "ประวัติการอนุมัติ"
       }
     },
     "detail": {
@@ -59,9 +66,13 @@
       "documents": "เอกสาร",
       "activity": "ประวัติกิจกรรม",
       "comments": "ความคิดเห็น",
+      "files": "ไฟล์",
+      "clickToPreview": "คลิกเพื่อดูตัวอย่าง",
       "actions": {
         "title": "ตรวจสอบและอนุมัติ",
         "subtitle": "อนุมัตินี้รอตรวจสอบของคุณในฐานะ",
+        "actionRequired": "ต้องการดำเนินการ",
+        "reviewingAs": "กำลังตรวจสอบในฐานะ",
         "comment": "เพิ่มความคิดเห็น",
         "commentPlaceholder": "กรอกความคิดเห็นของคุณ...",
         "attachments": "แนบไฟล์ (ไม่บังคับ)",
@@ -70,6 +81,11 @@
         "reject": "ปฏิเสธ",
         "requestMoreInfo": "ขอข้อมูลเพิ่มเติม"
       }
+    },
+    "stepper": {
+      "inProgress": "กำลังดำเนินการ",
+      "pending": "รอดำเนินการ",
+      "completed": "เสร็จแล้ว"
     },
     "fields": {
       "approvalCode": "รหัสอนุมัติ",
@@ -81,8 +97,11 @@
       "startDate": "วันที่เริ่มต้น",
       "endDate": "วันที่สิ้นสุด",
       "paymentTerms": "เงื่อนไขการชำระเงิน",
+      "decidedBy": "ตัดสินโดย",
+      "comment": "ความคิดเห็น",
       "document": "เอกสาร",
-      "preview": "ดูตัวอย่าง"
+      "preview": "ดูตัวอย่าง",
+      "uploaded": "อัปโหลดเมื่อ"
     },
     "activity": {
       "submitted": "ส่ง",
@@ -108,6 +127,9 @@
       "rejected": "ปฏิเสธ"
     },
     "messages": {
+      "success": "สำเร็จ",
+      "actionError": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง",
+      "comingSoon": "ฟีเจอร์นี้กำลังจะมาเร็วๆ นี้",
       "approveSuccess": "อนุมัติเอกสารสำเร็จ",
       "rejectSuccess": "ปฏิเสธเอกสารสำเร็จ",
       "requestMoreInfoSuccess": "ส่งคำขอข้อมูลเพิ่มเติมสำเร็จ",
@@ -118,7 +140,22 @@
       "confirmRejectMessage": "คุณแน่ใจหรือไม่ว่าต้องการปฏิเสธเอกสารนี้? การกระทำนี้ไม่สามารถยกเลิกได้",
       "noDocuments": "ไม่มีเอกสารแนบ",
       "noComments": "ยังไม่มีความคิดเห็น",
-      "fileTooLarge": "ไฟล์ {name} มีขนาดใหญ่เกินไป (สูงสุด 10MB)"
+      "fileTooLarge": "ไฟล์ {name} มีขนาดใหญ่เกินไป (สูงสุด 10MB)",
+      "downloadSuccess": "ดาวน์โหลดเอกสารสำเร็จ",
+      "downloadError": "ดาวน์โหลดเอกสารไม่สำเร็จ"
+    },
+    "actions": {
+      "export": "ส่งออก",
+      "cancel": "ยกเลิก",
+      "confirm": "ยืนยัน",
+      "clear": "ล้าง",
+      "all": "ทั้งหมด",
+      "search": "ค้นหา",
+      "activeFilters": "ตัวกรองที่ใช้งาน",
+      "today": "วันนี้",
+      "yesterday": "เมื่อวาน",
+      "of": "จาก",
+      "page": "หน้า"
     },
     "empty": {
       "title": "ไม่พบเอกสารอนุมัติ",

@@ -13,7 +13,13 @@
       "type": "Type",
       "priority": "Priority",
       "sortBy": "Sort By",
-      "search": "Search approvals..."
+      "search": "Search approvals...",
+      "sort": {
+        "date_new_old": "Date: Newest first",
+        "date_old_new": "Date: Oldest first",
+        "value": "Value",
+        "priority": "Priority"
+      }
     },
     "priority": {
       "urgent": "Urgent",
@@ -42,12 +48,13 @@
       "customer": "Customer",
       "value": "Value",
       "sender": "Sender",
-      "currentStep": "Waiting at",
+      "waitingAt": "Waiting at",
       "daysWaiting": "days ago",
       "actions": {
         "reject": "Reject",
         "approve": "Approve",
-        "view": "View Details"
+        "view": "View Details",
+        "history": "Approval History"
       }
     },
     "detail": {
@@ -59,9 +66,13 @@
       "documents": "Documents",
       "activity": "Activity History",
       "comments": "Comments",
+      "files": "files",
+      "clickToPreview": "Click to preview",
       "actions": {
         "title": "Review and Approve",
         "subtitle": "This approval is waiting for your review as",
+        "actionRequired": "Action Required",
+        "reviewingAs": "Reviewing as",
         "comment": "Add Comment",
         "commentPlaceholder": "Enter your comment...",
         "attachments": "Attachments (Optional)",
@@ -70,6 +81,11 @@
         "reject": "Reject",
         "requestMoreInfo": "Request More Info"
       }
+    },
+    "stepper": {
+      "inProgress": "In Progress",
+      "pending": "Pending",
+      "completed": "completed"
     },
     "fields": {
       "approvalCode": "Approval Code",
@@ -81,8 +97,11 @@
       "startDate": "Start Date",
       "endDate": "End Date",
       "paymentTerms": "Payment Terms",
+      "decidedBy": "Decided By",
+      "comment": "Comment",
       "document": "Document",
-      "preview": "Preview"
+      "preview": "Preview",
+      "uploaded": "Uploaded"
     },
     "activity": {
       "submitted": "submitted",
@@ -108,6 +127,9 @@
       "rejected": "Rejected"
     },
     "messages": {
+      "success": "Success",
+      "actionError": "An error occurred. Please try again.",
+      "comingSoon": "This feature is coming soon",
       "approveSuccess": "Document approved successfully",
       "rejectSuccess": "Document rejected successfully",
       "requestMoreInfoSuccess": "Request for more info sent successfully",
@@ -118,7 +140,22 @@
       "confirmRejectMessage": "Are you sure you want to reject this document? This action cannot be undone.",
       "noDocuments": "No documents attached",
       "noComments": "No comments yet",
-      "fileTooLarge": "File {name} is too large (max 10MB)"
+      "fileTooLarge": "File {name} is too large (max 10MB)",
+      "downloadSuccess": "Document downloaded successfully",
+      "downloadError": "Failed to download document"
+    },
+    "actions": {
+      "export": "Export",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "clear": "Clear",
+      "all": "All",
+      "search": "Search",
+      "activeFilters": "Active filters",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "of": "of",
+      "page": "page"
     },
     "empty": {
       "title": "No approvals found",

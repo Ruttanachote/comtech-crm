@@ -1,6 +1,6 @@
 <template>
-  <div class="activity-section bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-    <h3 class="text-lg font-semibold text-gray-900 mb-4">
+  <div class="activity-section bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm p-4 sm:p-5">
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
       {{ t('approval.detail.activity') }}
     </h3>
 
@@ -21,21 +21,21 @@
         <!-- Content -->
         <div class="flex-1">
           <div class="flex items-center gap-2 mb-1">
-            <span class="font-medium text-gray-900">{{ activity.user.name }}</span>
-            <span class="text-sm text-gray-500">({{ activity.user.role }})</span>
+            <span class="font-medium text-gray-900 dark:text-white">{{ activity.user.name }}</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">({{ activity.user.role }})</span>
           </div>
 
-          <p class="text-sm text-gray-700 mb-1">
-            <span v-if="activity.action === 'submitted'" class="text-blue-600">
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-1">
+            <span v-if="activity.action === 'submitted'" class="text-blue-600 dark:text-blue-400">
               {{ t('approval.activity.submitted') }}
             </span>
-            <span v-else-if="activity.action === 'approved'" class="text-emerald-600">
+            <span v-else-if="activity.action === 'approved'" class="text-emerald-600 dark:text-emerald-400">
               {{ t('approval.activity.approved') }}
             </span>
-            <span v-else-if="activity.action === 'rejected'" class="text-red-600">
+            <span v-else-if="activity.action === 'rejected'" class="text-red-600 dark:text-red-400">
               {{ t('approval.activity.rejected') }}
             </span>
-            <span v-else-if="activity.action === 'request_more_info'" class="text-amber-600">
+            <span v-else-if="activity.action === 'request_more_info'" class="text-amber-600 dark:text-amber-400">
               {{ t('approval.activity.requestedMoreInfo') }}
             </span>
             <span v-else-if="activity.action === 'commented'">
@@ -43,11 +43,11 @@
             </span>
           </p>
 
-          <p v-if="activity.comment" class="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg mt-2">
+          <p v-if="activity.comment" class="text-sm text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 p-3 rounded-lg mt-2">
             {{ activity.comment }}
           </p>
 
-          <p class="text-xs text-gray-400 mt-1">
+          <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">
             {{ formatDateTime(activity.timestamp) }}
           </p>
         </div>
@@ -56,8 +56,8 @@
 
     <!-- Empty State -->
     <div v-else class="text-center py-8">
-      <UIcon name="i-heroicons-chat-bubble-left-right" class="w-12 h-12 text-gray-300 mx-auto mb-3" />
-      <p class="text-sm text-gray-500">{{ t('approval.messages.noComments') }}</p>
+      <UIcon name="i-heroicons-chat-bubble-left-right" class="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
+      <p class="text-sm text-gray-500 dark:text-gray-400">{{ t('approval.messages.noComments') }}</p>
     </div>
   </div>
 </template>
@@ -73,7 +73,6 @@ const props = defineProps<Props>()
 
 const { t, locale } = useI18n()
 
-// Methods
 function formatDateTime(date: string): string {
   return new Date(date).toLocaleString(locale.value === 'th' ? 'th-TH' : 'en-US', {
     year: 'numeric',

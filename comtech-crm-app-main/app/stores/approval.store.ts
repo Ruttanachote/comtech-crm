@@ -38,7 +38,7 @@ interface ApprovalState {
   detailLoading: boolean
   
   // Actions
-  actionLoading: boolean
+  actionLoading: 'approve' | 'reject' | 'requestMoreInfo' | null
   
   // Last updated
   lastUpdated: string | null
@@ -57,7 +57,7 @@ export const useApprovalStore = defineStore('approval', {
     
     // Pagination
     page: 1,
-    pageSize: 10,
+    pageSize: 5,
     total: 0,
     
     // Filters
@@ -78,7 +78,7 @@ export const useApprovalStore = defineStore('approval', {
     detailLoading: false,
     
     // Actions
-    actionLoading: false,
+    actionLoading: null,
     
     // Last updated
     lastUpdated: null,
@@ -117,7 +117,7 @@ export const useApprovalStore = defineStore('approval', {
     isDetailLoading: (state): boolean => state.detailLoading,
     
     // Check if action loading
-    isActionLoading: (state): boolean => state.actionLoading,
+    isActionLoading: (state): boolean => !!state.actionLoading,
     
     // Get filter label
     filterLabel: (state) => (key: keyof ApprovalFilters): string => {
@@ -165,7 +165,7 @@ export const useApprovalStore = defineStore('approval', {
     // ============================================
     async fetchList(
       page: number = 1,
-      pageSize: number = 10,
+      pageSize: number = 5,
       filters?: ApprovalFilters
     ): Promise<void> {
       this.loading = true
@@ -266,7 +266,7 @@ export const useApprovalStore = defineStore('approval', {
       id: string,
       data?: { comment?: string; attachments?: File[] }
     ): Promise<ApprovalActionResponse> {
-      this.actionLoading = true
+      this.actionLoading = 'approve'
       
       try {
         const result = await approvalService.approve(id, data)
@@ -295,7 +295,7 @@ export const useApprovalStore = defineStore('approval', {
           message: 'Failed to approve document',
         }
       } finally {
-        this.actionLoading = false
+        this.actionLoading = null
       }
     },
 
@@ -306,7 +306,7 @@ export const useApprovalStore = defineStore('approval', {
       id: string,
       data?: { comment?: string; attachments?: File[] }
     ): Promise<ApprovalActionResponse> {
-      this.actionLoading = true
+      this.actionLoading = 'reject'
       
       try {
         const result = await approvalService.reject(id, data)
@@ -335,7 +335,7 @@ export const useApprovalStore = defineStore('approval', {
           message: 'Failed to reject document',
         }
       } finally {
-        this.actionLoading = false
+        this.actionLoading = null
       }
     },
 
@@ -346,7 +346,7 @@ export const useApprovalStore = defineStore('approval', {
       id: string,
       data?: { comment?: string; attachments?: File[] }
     ): Promise<ApprovalActionResponse> {
-      this.actionLoading = true
+      this.actionLoading = 'requestMoreInfo'
       
       try {
         const result = await approvalService.requestMoreInfo(id, data)
@@ -375,7 +375,7 @@ export const useApprovalStore = defineStore('approval', {
           message: 'Failed to request more info',
         }
       } finally {
-        this.actionLoading = false
+        this.actionLoading = null
       }
     },
 
